@@ -45,6 +45,9 @@ alias i="npm run-script integration"
 alias vim='vim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
 
+alias ta='tmux attach -t'
+alias ae='teamocil artengine --here'
+
 for config ($ZSH/**/*.zsh) source $config
 
 BASE16_SHELL="$ZSH/base16-shell/base16-tomorrow.dark.sh"

@@ -1,0 +1,6 @@
+name: meta
+windows:
+    - name: config
+    - root: ~/bin/dotfiles
+    - panes:
+        - vim ~/.vimrc
