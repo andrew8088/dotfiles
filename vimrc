@@ -4,13 +4,15 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim " required for Vundle
 call vundle#begin() " required for Vundle
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()         " required for Vundle
 filetype plugin indent on " required for Vundle
 
 set t_Co=256
 syntax on
-colorscheme Tomorrow-Night
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow
 
 set noerrorbells 
 set novisualbell
@@ -46,7 +48,7 @@ if has("gui")
 	set guioptions-=T                             "hide toolbar in mvim
 	set guioptions-=r
 	set guioptions-=L
-	set guifont=menlo:h20
+	set guifont=hack:h20
 endif
 
 let mapleader=','
@@ -65,3 +67,6 @@ cnoreabbrev Q! q!
 cnoreabbrev Tabe tabe
 cnoreabbrev wrap set wrap
 cnoreabbrev nowrap set nowrap
+
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE

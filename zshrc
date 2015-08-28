@@ -1,5 +1,7 @@
 export GOPATH="/Users/andrew/bin/gopath"
 export PATH="/Users/andrew/bin:$GOPATH/bin:$PATH"
+export DOTFILES=$HOME/bin/dotfiles
+export ZSH=$DOTFILES/zsh
 fpath=( "/usr/local/share/zsh/site-functions" $fpath )
 
 autoload -U colors && colors
@@ -42,3 +44,8 @@ alias i="npm run-script integration"
 
 alias vim='vim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
+
+for config ($ZSH/**/*.zsh) source $config
+
+BASE16_SHELL="$ZSH/base16-shell/base16-tomorrow.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
