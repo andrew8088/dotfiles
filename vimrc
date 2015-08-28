@@ -5,6 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim " required for Vundle
 call vundle#begin() " required for Vundle
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jgdavey/tslime.vim'
 
 call vundle#end()         " required for Vundle
 filetype plugin indent on " required for Vundle
@@ -42,6 +44,15 @@ set shiftround
 " folding -----------------------------------------------------------------
 set foldmethod=marker
 set foldmarker={{{,}}}
+
+" spliting ----------------------------------------------------------------
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
 
 " gui setings -------------------------------------------------------------
 if has("gui")
