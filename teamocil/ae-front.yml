@@ -1,0 +1,13 @@
+name: ae-front
+windows:
+    - name: editor
+      root: ~/code/artengine-themes
+    - name: shell
+      root: ~/code/artengine-themes
+      focus: true
+      panes:
+        - node ./bin/index.js
+    - name: server
+      root: ~/code/artengine-themes
+      panes:
+        - node ./bin/server.js

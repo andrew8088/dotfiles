@@ -1,19 +1,16 @@
-name: artengine
+name: artengine-back
 windows:
     - name: editor
       root: ~/code/artengine
       panes:
-        - vim backend.js
+        - vim server.js
     - name: shell
       root: ~/code/artengine
-      focus: true
       panes:
         - git status
-    - name: db
+    - name: server
       root: ~/code/artengine
       layout: even-vertical
       panes:
-        - node backend.js
+        - node server.js
         - mongo artengine
-
-
