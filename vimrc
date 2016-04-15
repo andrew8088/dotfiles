@@ -7,6 +7,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jgdavey/tslime.vim'
+Plugin 'kien/ctrlp.vim'
+Bundle 'wakatime/vim-wakatime'
+Bundle 'mtscout6/vim-cjsx'
+Bundle 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()         " required for Vundle
 filetype plugin indent on " required for Vundle
@@ -16,22 +22,32 @@ syntax on
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 
-set noerrorbells 
+set noerrorbells
 set novisualbell
 set t_vb=
+
+let g:ctrlp_custom_ignore = 'node_modules\|\.DS_Store\|\.git'
+let g:ctrlp_prompt_mappings = {
+            \'AcceptSelection("e")': ['<C-e>'],
+            \'AcceptSelection("t")': ['<Cr>'],
+            \}
 
 " moving around, searching, and patterns ----------------------------------
 set incsearch
 set showmatch
 set smartcase
 set ignorecase
-set gdefault 
+set gdefault
 " displaying text
 set number
 set linebreak
+set nowrap
 " syntax, highlighting, spelling
 set hlsearch
 set background=dark
+set colorcolumn=80
+
+set mouse=a
 
 " tabs and indenting ------------------------------------------------------
 set autoindent
@@ -40,6 +56,10 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType mail setlocal fo+=aw
+
 set shiftround
 " folding -----------------------------------------------------------------
 set foldmethod=marker
@@ -81,3 +101,8 @@ cnoreabbrev nowrap set nowrap
 
 set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
+
+highlight ExtraWhitespace ctermbg=18 guibg=#282a2e
+match ExtraWhitespace /\s\+$/
+
+let g:syntastic_javascript_checkers = ['jscs']
