@@ -1,42 +1,37 @@
-export GOPATH="/Users/andrew/bin/gopath"
-export PATH="/Users/andrew/bin:$GOPATH/bin:$PATH"
+export PATH="/Users/andrew/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
-export ZSH=$DOTFILES/zsh
-fpath=( "/usr/local/share/zsh/site-functions" $fpath )
 
-autoload -U colors && colors
+# FOR PURE PROMPT (https://github.com/sindresorhus/pure) ----------------------
+fpath=( "$DOTFILES/zsh/zfunctions" $fpath )
+
 autoload -U promptinit && promptinit
-
 prompt pure
 
-alias l='ls -la'
-alias sl=ls
+autoload -U colors && colors
 
-function take {
-    mkdir $1
-    cd $1
+BASE16_SHELL="$ZSH/base16-shell/base16-flat.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
+bindkey -v
+
+bindkey '^?' backward-delete-char
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg[yellow]%}[% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
+    zle reset-prompt
 }
 
-function server() {
-    if [ $1 ]
-    then
-        local port="$1"
-    else
-        local port="8088"
-    fi
-    open "http://localhost:$port/" && python -m SimpleHTTPServer "$port"
-}
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
 
-alias gst='git status'
-alias gc='git commit'
-alias gco='git checkout'
-alias ga='git add'
-alias gpdm='git push deploy master'
-alias gpom='git push -u origin master'
-alias gl="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
+# ALIASES ---------------------------------------------------------------------
 alias hcat='highlight -O ansi'
 
 alias u="npm run-script unit"
@@ -46,9 +41,18 @@ alias vim='vim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
 
 alias ta='tmux attach -t'
-alias ae='teamocil artengine --here'
 
-for config ($ZSH/**/*.zsh) source $config
+alias l='ls -la'
+alias sl=ls
 
-BASE16_SHELL="$ZSH/base16-shell/base16-tomorrow.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+alias gst='git status'
+alias gc='git commit'
+alias gco='git checkout'
+alias ga='git add'
+
+alias gl="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+# FUNCTIONS -------------------------------------------------------------------
+function take {
+    mkdir $1
+    cd $1
+}
