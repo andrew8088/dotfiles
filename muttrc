@@ -57,7 +57,7 @@ set postponed = "+andrew-burgess.io/drafts"
 
 # Index View Options ---------------------------------
 set date_format = "%b %d, %Y"
-set index_format = "%-30.30F  %s%*  %D"
+set index_format = "%-20.20F  %s%*   %D"
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
 set uncollapse_jump                        # don't collapse on an unread message
@@ -150,8 +150,8 @@ macro index,pager y "<save-message>=andrew-burgess.io/archive<enter>" "Archive"
 
 color index red default "~U" # unread messages
 color index cyan default "~D" # unread messages
-color status green default
-color indicator brightyellow color235
+color status color20 default
+color indicator blue color21
 
 set status_on_top
 

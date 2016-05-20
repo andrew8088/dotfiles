@@ -4,7 +4,6 @@ windows:
       root: ~/code/artengine-themes
     - name: shell
       root: ~/code/artengine-themes
-      focus: true
       panes:
         - node ./bin/index.js
     - name: server

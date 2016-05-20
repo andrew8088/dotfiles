@@ -1,0 +1,10 @@
+name: COMP495
+windows:
+    - name: editor
+      root: ~/Documents/Dropbox/University/COMP495
+      panes:
+        - vim 1-project-proposal.txt
+    - name: shell
+      root: ~/Documents/Dropbox/University/COMP495
+      panes:
+        - ls
