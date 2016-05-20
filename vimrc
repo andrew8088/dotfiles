@@ -13,6 +13,7 @@ Bundle 'mtscout6/vim-cjsx'
 Bundle 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()         " required for Vundle
 filetype plugin indent on " required for Vundle
@@ -20,7 +21,7 @@ filetype plugin indent on " required for Vundle
 set t_Co=256
 syntax on
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-tomorrow
+"colorscheme base16-chalk  "Set through .zshrc 
 
 set noerrorbells
 set novisualbell
@@ -44,7 +45,7 @@ set linebreak
 set nowrap
 " syntax, highlighting, spelling
 set hlsearch
-set background=dark
+set background=light
 set colorcolumn=80
 
 set mouse=a
@@ -59,6 +60,8 @@ set tabstop=4
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType mail setlocal fo+=aw
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.txt set filetype=markdown
 
 set shiftround
 " folding -----------------------------------------------------------------
@@ -105,4 +108,4 @@ hi VertSplit ctermbg=NONE guibg=NONE
 highlight ExtraWhitespace ctermbg=18 guibg=#282a2e
 match ExtraWhitespace /\s\+$/
 
-let g:syntastic_javascript_checkers = ['jscs']
+"let g:syntastic_javascript_checkers = ['jscs']

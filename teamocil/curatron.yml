@@ -1,0 +1,6 @@
+name: curatron
+windows:
+    - name: editor
+      root: ~/code/mechanicalcurator
+    - name: shell
+      root: ~/code/mechanicalcurator

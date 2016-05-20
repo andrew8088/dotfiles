@@ -9,7 +9,7 @@ prompt pure
 
 autoload -U colors && colors
 
-BASE16_SHELL="$ZSH/base16-shell/base16-flat.dark.sh"
+BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-chalk.light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -50,9 +50,24 @@ alias gc='git commit'
 alias gco='git checkout'
 alias ga='git add'
 
-alias gl="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+alias gl="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(black)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 # FUNCTIONS -------------------------------------------------------------------
 function take {
     mkdir $1
     cd $1
 }
+
+function unmount_all {
+    diskutil list |
+    grep external |
+    cut -d ' ' -f 1 |
+    while read file
+    do
+        diskutil unmountDisk "$file"
+    done
+}
+
+alias unmount_all_and_exit='unmount_all && exit'
+
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
