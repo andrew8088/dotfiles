@@ -7,7 +7,6 @@ fpath=( "$DOTFILES/zsh/zfunctions" $fpath )
 
 autoload -U promptinit && promptinit
 prompt pure
-
 autoload -U colors && colors
 
 BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-chalk.light.sh"
@@ -16,12 +15,11 @@ BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-chalk.light.sh"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 precmd() {
-    source ~/.zshrc
+    source ~/bin/dotfiles/aliases
 }
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
 bindkey -v
-
 bindkey '^?' backward-delete-char
 
 function zle-line-init zle-keymap-select {
@@ -33,9 +31,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
-
-#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# END VIM MODE ----------------------------------------------------------------
 
 eval "$(lua ~/bin/z.lua --init zsh)"
-
 source ~/bin/dotfiles/aliases
