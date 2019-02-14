@@ -7,12 +7,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jgdavey/tslime.vim'
-Plugin 'kien/ctrlp.vim'
-Bundle 'wakatime/vim-wakatime'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Bundle 'mtscout6/vim-cjsx'
-Bundle 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 
 call vundle#end()         " required for Vundle
@@ -92,6 +93,9 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
+
+" project navigation  -----------------------------------------------------
+nnoremap <C-p> :Files<cr>
 
 " abbreviations -----------------------------------------------------------
 cnoreabbrev W w
