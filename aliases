@@ -1,0 +1,51 @@
+# ALIASES ---------------------------------------------------------------------
+alias unmount_all_and_exit='unmount_all && exit'
+alias d=docker
+alias hcat='highlight -O ansi'
+
+alias u="npm run-script unit"
+alias i="npm run-script integration"
+
+alias vim='vim -w ~/.vimlog "$@"'
+alias mvim='mvim -w ~/.vimlog "$@"'
+
+alias ta='tmux attach -t'
+
+alias l='ls -lah'
+alias sl=ls
+alias c='clear'
+alias s='source ~/.zshrc'
+
+alias gst='git status'
+alias gc='git commit'
+alias gco='git checkout'
+alias ga='git add'
+alias gd='git diff'
+alias gpr='git remote prune origin'
+alias ff='gpr && git pull --ff-only'
+alias gba='git branch --all'
+alias gb='git branch'
+alias gbd='git branch -D'
+alias gcp='git cherry-pick'
+alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(black)%s%C(reset) %C(bold magenta)%d%C(reset)'"
+alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(black)%s%C(reset) %C(bold magenta)%d%C(reset)'"
+# FUNCTIONS -------------------------------------------------------------------
+function gcl {
+    gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
+}
+function take {
+    mkdir $1
+    cd $1
+}
+
+function unmount_all {
+    diskutil list |
+    grep external |
+    cut -d ' ' -f 1 |
+    while read file
+    do
+        diskutil unmountDisk "$file"
+    done
+}
+
+source ~/bin/dotfiles/job-specific
