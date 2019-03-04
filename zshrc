@@ -19,7 +19,7 @@ precmd() {
 }
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
-bindkey -v
+#bindkey -v
 bindkey '^?' backward-delete-char
 
 function zle-line-init zle-keymap-select {
