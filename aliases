@@ -22,6 +22,7 @@ alias gc='git commit'
 alias gco='git checkout'
 alias ga='git add'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gpr='git remote prune origin'
 alias ff='gpr && git pull --ff-only'
 alias gba='git branch --all'
@@ -31,6 +32,11 @@ alias gbd='git branch -D'
 alias gcp='git cherry-pick'
 alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
+alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
+alias grd='dff && git rebase develop'
+alias gam='gc --amend -C HEAD'
+alias gp='git push'
+alias gpf='git push -f'
 # FUNCTIONS -------------------------------------------------------------------
 function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
@@ -48,6 +54,14 @@ function unmount_all {
     do
         diskutil unmountDisk "$file"
     done
+}
+
+dff ()
+{
+    local curr_branch=`git-current-branch`
+    gco develop
+    ff
+    gco $curr_branch
 }
 
 source ~/bin/dotfiles/job-specific
