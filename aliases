@@ -16,6 +16,7 @@ alias sl=ls
 alias c='clear'
 alias s='source ~/.zshrc'
 alias h=heroku
+alias jj='pbpaste | jsonpp | pbcopy'
 
 alias gst='git status'
 alias gc='git commit'
@@ -36,7 +37,7 @@ alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias grd='dff && git rebase develop'
 alias gam='gc --amend -C HEAD'
 alias gp='git push'
-alias gpf='git push -f'
+alias gpf='git push -–force-with-lease'
 # FUNCTIONS -------------------------------------------------------------------
 function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
@@ -65,3 +66,12 @@ dff ()
 }
 
 source ~/bin/dotfiles/job-specific
+
+dprune () {
+    docker rm $(docker ps -a -q)
+    docker rmi $(docker images -q)
+    docker volume rm $(docker volume ls |awk '{print $2}')
+    rm -rf ~/Library/Containers/com.docker.docker/Data/*
+    docker system prune -a
+}
+
