@@ -29,6 +29,7 @@ alias gpr='git remote prune origin'
 alias ff='gpr && git pull --ff-only'
 alias gba='git branch --all'
 alias gb='git branch'
+alias gbb='git-switchbranch'
 alias gbf='git branch | head -1 | xargs' # top branch
 alias gbd='git branch -D'
 alias gcp='git cherry-pick'
@@ -38,11 +39,16 @@ alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias grd='dff && git rebase develop'
 alias gam='gc --amend -C HEAD'
 alias gp='git push'
-alias gpf='git push -–force-with-lease'
+alias gpf='git push --force-with-lease'
+alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 # FUNCTIONS -------------------------------------------------------------------
 function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
 }
+
+
+
+
 function take {
     mkdir $1
     cd $1
