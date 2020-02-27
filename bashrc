@@ -1,12 +1,5 @@
-export PATH="$HOME/bin:$PATH"
+export PATH="/Users/andrewburgess/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
-source ~/.secrets
-source ~/bin/dotfiles/zsh/history.zsh
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # FOR PURE PROMPT (https://github.com/sindresorhus/pure) ----------------------
 fpath=( "$DOTFILES/zsh/zfunctions" $fpath )
@@ -39,5 +32,5 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 # END VIM MODE ----------------------------------------------------------------
 
-#eval "$(lua ~/bin/z.lua --init zsh)"
+eval "$(lua ~/bin/z.lua --init zsh)"
 source ~/bin/dotfiles/aliases
