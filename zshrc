@@ -1,4 +1,4 @@
-export PATH="/Users/andrewburgess/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 source ~/.secrets
 source ~/bin/dotfiles/zsh/history.zsh
@@ -39,5 +39,5 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 # END VIM MODE ----------------------------------------------------------------
 
-eval "$(lua ~/bin/z.lua --init zsh)"
+#eval "$(lua ~/bin/z.lua --init zsh)"
 source ~/bin/dotfiles/aliases
