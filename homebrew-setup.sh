@@ -4,3 +4,6 @@ brew install tmux
 brew install tree
 brew install youtube-dl
 brew install jsonpp
+
+brew tap jakehilborn/jakehilborn
+brew install displayplacer
