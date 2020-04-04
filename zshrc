@@ -1,5 +1,6 @@
 export PATH="$HOME/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
+export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 source ~/.secrets
 source ~/bin/dotfiles/zsh/history.zsh
 
