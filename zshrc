@@ -1,7 +1,10 @@
 export PATH="$HOME/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
-source ~/.secrets
+
+if test -f "~/.secrets"; then
+    source ~/.secrets
+fi
 source ~/bin/dotfiles/zsh/history.zsh
 
 # NVM
@@ -16,7 +19,7 @@ autoload -U promptinit && promptinit
 prompt pure
 autoload -U colors && colors
 
-BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-chalk.light.sh"
+BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

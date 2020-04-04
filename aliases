@@ -68,7 +68,11 @@ dff ()
     gco $curr_branch
 }
 
-source ~/bin/dotfiles/job-specific
+
+JOBFILE="~/bin/dotfiles/job-specific"
+if test -f "$JOBFILE"; then
+    source "$JOBFILE"
+fi
 
 dclear () {
     docker ps -a -q | xargs docker kill -f
