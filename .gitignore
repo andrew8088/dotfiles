@@ -1,6 +1,5 @@
 .DS_Store
 vim/bundle
 vim/.netrwhist
-tmux
 *.swp
 job-specific
