@@ -1,38 +1,42 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim " required for Vundle
-call vundle#begin() " required for Vundle
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jgdavey/tslime.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Bundle 'mtscout6/vim-cjsx'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+packadd minpac
+call minpac#init()
 
-call vundle#end()         " required for Vundle
-filetype plugin indent on " required for Vundle
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('chriskempson/base16-vim')
+call minpac#add('jgdavey/tslime.vim') "for tmux
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('airblade/vim-gitgutter')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('janko/vim-test')
+call minpac#add('pangloss/vim-javascript')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('machakann/vim-highlightedyank')
+call minpac#add('HerringtonDarkholme/yats.vim')
+
+" For Neovim
+if has('nvim')
+    call minpac#add('mhartington/nvim-typescript', {'do': './install.sh'})
+    call minpac#add('Shougo/deoplete.nvim')
+    call minpac#add('Shougo/denite.nvim')
+endif
+
+filetype plugin indent on
 
 set t_Co=256
 syntax on
-let base16colorspace=256  " Access colors present in 256 colorspace
-"colorscheme base16-chalk  "Set through .zshrc 
+let base16colorspace=256
+colorscheme base16-eighties
+
 
 set noerrorbells
 set novisualbell
 set t_vb=
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -41,8 +45,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:airline_theme='bubblegum'
-
-let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " moving around, searching, and patterns ----------------------------------
 set incsearch
@@ -79,6 +81,9 @@ set shiftround
 set foldmethod=marker
 set foldmarker={{{,}}}
 
+" concealing --------------------------------------------------------------
+set conceallevel=2
+
 " spliting ----------------------------------------------------------------
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -98,18 +103,14 @@ endif
 
 let mapleader=','
 nnoremap \ ,
-nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 
 " project navigation  -----------------------------------------------------
-nnoremap <C-p> :Files<cr>
-nnoremap <C-n> :NERDTreeToggle<cr>
-
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+nnoremap <C-p> :GFiles<cr>
 
 " Buffers -----------------------------------------------------------------
 " This allows buffers to be hidden if you've modified a buffer.
@@ -137,6 +138,9 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " abbreviations -----------------------------------------------------------
+nnoremap ; :
+vnoremap ; :
+
 cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
@@ -151,7 +155,20 @@ hi VertSplit ctermbg=NONE guibg=NONE
 highlight ExtraWhitespace ctermbg=18 guibg=#282a2e
 match ExtraWhitespace /\s\+$/
 
-"let g:syntastic_javascript_checkers = ['jscs']
-
 autocmd FileType typescript setlocal completeopt+=preview
 
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+
+
+let g:deoplete#enable_at_startup = 1
