@@ -5,7 +5,7 @@ alias hcat='highlight -O ansi'
 alias u="npm run-script unit"
 alias i="npm run-script integration"
 
-alias vim='vim -w ~/.vimlog "$@"'
+alias vim='nvim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
 
 alias ta='tmux attach -t'
@@ -45,6 +45,10 @@ function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
 }
 
+function gg {
+    git branch | grep "$1" | head -1 | xargs git checkout
+}
+
 function take {
     mkdir $1
     cd $1
@@ -69,8 +73,8 @@ dff ()
 }
 
 
-JOBFILE="~/bin/dotfiles/job-specific"
-if test -f "$JOBFILE"; then
+JOBFILE="$HOME/bin/dotfiles/job-specific"
+if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
 fi
 
