@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/usr/local/bin:/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 
