@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/usr/local/bin:/bin:$PATH"
+export PATH="$HOME/bin:$HOME/usr/local/bin:/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 
