@@ -18,13 +18,8 @@ call minpac#add('pangloss/vim-javascript')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('machakann/vim-highlightedyank')
 call minpac#add('HerringtonDarkholme/yats.vim')
-
-" For Neovim
-if has('nvim')
-    call minpac#add('mhartington/nvim-typescript', {'do': './install.sh'})
-    call minpac#add('Shougo/deoplete.nvim')
-    call minpac#add('Shougo/denite.nvim')
-endif
+call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
+call minpac#add('dbeniamine/todo.txt-vim')
 
 filetype plugin indent on
 
@@ -39,10 +34,10 @@ set novisualbell
 set t_vb=
 
 " Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:airline_theme='bubblegum'
 
@@ -52,6 +47,7 @@ set showmatch
 set smartcase
 set ignorecase
 set gdefault
+set inccommand=nosplit
 " displaying text
 set number
 set linebreak
@@ -71,14 +67,15 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 autocmd FileType mail setlocal fo+=aw
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.txt set filetype=markdown
 
 set shiftround
 " folding -----------------------------------------------------------------
-set foldmethod=marker
+set foldmethod=manual
 set foldmarker={{{,}}}
 
 " concealing --------------------------------------------------------------
@@ -102,6 +99,7 @@ if has("gui")
 endif
 
 let mapleader=','
+let maplocalleader="\\"
 nnoremap \ ,
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>
@@ -119,16 +117,16 @@ set hidden
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
+"nmap <leader>T :enew<cr>
 
 " Move to the next buffer
 nmap <C-l> :bnext<CR>
-
-nnoremap gt :bnext<CR>
-nnoremap gT :bprevious<CR>
-
 " Move to the previous buffer
 nmap <C-h> :bprevious<CR>
+
+"nnoremap gt :bnext<CR>
+"nnoremap gT :bprevious<CR>
+
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -155,20 +153,85 @@ hi VertSplit ctermbg=NONE guibg=NONE
 highlight ExtraWhitespace ctermbg=18 guibg=#282a2e
 match ExtraWhitespace /\s\+$/
 
-autocmd FileType typescript setlocal completeopt+=preview
+let g:yats_host_keyword = 1
 
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
-let g:javascript_conceal_underscore_arrow_function = "🞅"
+" coc config, mostly copied from https://github.com/neoclide/coc.nvim
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-pairs',
+\ 'coc-tsserver',
+\ 'coc-json'
+\ ]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
 
 
-let g:deoplete#enable_at_startup = 1
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
+augroup todo_txt
+    au!
+    au filetype todo setlocal omnifunc=todo#Complete
+augroup END
+
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
