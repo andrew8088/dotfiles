@@ -11,3 +11,5 @@ mkdir -p "$home/.config"
 ln -s "$PWD/nvim" "$HOME/.config/nvim"
 
 gem install teamocil
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
