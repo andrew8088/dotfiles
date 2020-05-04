@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export PATH="$HOME/usr/local/bin:/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
@@ -16,13 +23,20 @@ export NVM_DIR="$HOME/.nvm"
 fpath=( "$DOTFILES/zsh/zfunctions" $fpath )
 
 autoload -U promptinit && promptinit
-prompt pure
+#prompt pure
 autoload -U colors && colors
+autoload -Uz compinit && compinit
 
-BASE16_SHELL="$DOTFILES/zsh/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# Base16 Shell
+ BASE16_SHELL="$HOME/.config/base16-shell/"
+ [ -n "$PS1" ] && \
+     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+             eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 precmd() {
     source ~/bin/dotfiles/aliases
@@ -45,3 +59,6 @@ export KEYTIMEOUT=1
 
 #eval "$(lua ~/bin/z.lua --init zsh)"
 source ~/bin/dotfiles/aliases
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f "$DOTFILES/p10k.zsh" ]] || source "$DOTFILES/p10k.zsh"
