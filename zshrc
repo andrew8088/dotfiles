@@ -9,10 +9,14 @@ export PATH="$HOME/bin:$HOME/usr/local/bin:/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 
-if test -f "~/.secrets"; then
-    source ~/.secrets
+if test -f "$HOME/.secrets"; then
+    source $HOME/.secrets
 fi
-source ~/bin/dotfiles/zsh/history.zsh
+
+if test -f "$HOME/bin/z.sh"; then
+    source $HOME/bin/z.sh
+fi
+source $DOTFILES/zsh/history.zsh
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -27,7 +31,7 @@ autoload -U promptinit && promptinit
 autoload -U colors && colors
 autoload -Uz compinit && compinit
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 # Base16 Shell
  BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -39,7 +43,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 precmd() {
-    source ~/bin/dotfiles/aliases
+    source $HOME/bin/dotfiles/aliases
 }
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
@@ -58,7 +62,7 @@ export KEYTIMEOUT=1
 # END VIM MODE ----------------------------------------------------------------
 
 #eval "$(lua ~/bin/z.lua --init zsh)"
-source ~/bin/dotfiles/aliases
+source $HOME/bin/dotfiles/aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$DOTFILES/p10k.zsh" ]] || source "$DOTFILES/p10k.zsh"
