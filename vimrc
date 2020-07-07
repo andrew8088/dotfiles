@@ -138,6 +138,9 @@ nmap <leader>bl :ls<CR>
 " abbreviations -----------------------------------------------------------
 nnoremap ; :
 vnoremap ; :
+inoremap ;; <esc>
+inoremap jj <esc>
+
 
 cnoreabbrev W w
 cnoreabbrev Wq wq
