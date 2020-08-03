@@ -40,6 +40,7 @@ alias gam='gc --amend -C HEAD'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
+alias grs='git restore --staged'
 # FUNCTIONS -------------------------------------------------------------------
 function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
@@ -50,7 +51,7 @@ function gg {
 }
 
 function take {
-    mkdir $1
+    mkdir -p $1
     cd $1
 }
 
@@ -81,7 +82,7 @@ fi
 dclear () {
     docker ps -a -q | xargs docker kill -f
     docker ps -a -q | xargs docker rm -f
-    docker images | grep "service\|none" | awk '{print $3}' | xargs docker rmi -f
+    docker images | grep "api\|none" | awk '{print $3}' | xargs docker rmi -f
 }
 
 dreset () {
