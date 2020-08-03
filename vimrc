@@ -20,6 +20,7 @@ call minpac#add('machakann/vim-highlightedyank')
 call minpac#add('HerringtonDarkholme/yats.vim')
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 call minpac#add('dbeniamine/todo.txt-vim')
+call minpac#add('voldikss/vim-floaterm')
 
 filetype plugin indent on
 
@@ -27,7 +28,6 @@ set t_Co=256
 syntax on
 let base16colorspace=256
 colorscheme base16-eighties
-
 
 set noerrorbells
 set novisualbell
@@ -238,3 +238,6 @@ augroup todo_txt
 augroup END
 
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
