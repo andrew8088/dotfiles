@@ -9,7 +9,8 @@ ln -s "$PWD/teamocil" "$HOME/.teamocil"
 ln -s "$PWD/gitignore" "$HOME/.gitignore"
 
 mkdir -p "$home/.config"
-ln -s "$PWD/nvim" "$HOME/.config/nvim"
+ln -s "$PWD/config/nvim" "$HOME/.config/nvim"
+ln -s "$PWD/config/alacritty" "$HOME/.config/alacritty"
 
 gem install teamocil
 
