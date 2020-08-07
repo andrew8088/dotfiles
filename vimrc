@@ -5,14 +5,15 @@ packadd minpac
 call minpac#init()
 
 call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('chriskempson/base16-vim')
+"call minpac#add('chriskempson/base16-vim')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('jgdavey/tslime.vim') "for tmux
 call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('airblade/vim-gitgutter')
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('janko/vim-test')
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('tpope/vim-commentary')
@@ -27,7 +28,8 @@ filetype plugin indent on
 set t_Co=256
 syntax on
 let base16colorspace=256
-colorscheme base16-eighties
+"colorscheme base16-eighties
+colorscheme nord
 
 set noerrorbells
 set novisualbell
@@ -39,7 +41,7 @@ set t_vb=
 " Show just the filename
 "let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:airline_theme='bubblegum'
+let g:airline_theme='nord'
 
 " moving around, searching, and patterns ----------------------------------
 set incsearch

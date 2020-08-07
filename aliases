@@ -41,6 +41,9 @@ alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias grs='git restore --staged'
+alias gbdd='git-branch-utils -d'
+alias gbuu='git-branch-utils -u'
+alias gbrr='git-branch-utils -r -b develop'
 # FUNCTIONS -------------------------------------------------------------------
 function gcl {
     gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
