@@ -33,12 +33,6 @@ autoload -Uz compinit && compinit
 
 source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
-# Base16 Shell
- BASE16_SHELL="$HOME/.config/base16-shell/"
- [ -n "$PS1" ] && \
-     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-             eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
