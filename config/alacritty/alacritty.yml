@@ -32,30 +32,6 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-# base16-eighties
-# colors:
-#   primary:
-#      background: "#2D2D2D"
-#      foreground: "#D3D0C8"
-#   normal:
-#      black: "#2d2d2d"
-#      red: "#f2777a"
-#      green: "#99cc99"
-#      yellow: "#ffcc66"
-#      blue: "#6699cc"
-#      magenta: "#cc99cc"
-#      cyan: "#66cccc"
-#      white: "#D3D0C8"
-#   bright:
-#      black: "#747369"
-#      red: "#f2777a"
-#      green: "#99cc99"
-#      yellow: "#ffcc66"
-#      blue: "#6699cc"
-#      magenta: "#cc99cc"
-#      cyan: "#66cccc"
-#      white: "#F2F0EC"
-#
 # Nord Theme
 colors:
   primary:
@@ -83,7 +59,7 @@ colors:
     cyan: '0x8FBCBB'
     white: '0xECEFF4'
 
-background_opacity: 0.9
+background_opacity: 1.0
 
 cursor:
   style: Block
