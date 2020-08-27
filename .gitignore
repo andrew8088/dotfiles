@@ -1,7 +1,6 @@
-.DS_Store
+**.DS_Store
 vim/bundle
-vim/.netrwhist
-nvim/.netrwhist
+**.netrwhist
 *.swp
 job-specific
 
