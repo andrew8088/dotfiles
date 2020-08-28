@@ -1,5 +1,6 @@
 **.DS_Store
 vim/bundle
+vim/pack/minpac/start
 **.netrwhist
 *.swp
 job-specific
