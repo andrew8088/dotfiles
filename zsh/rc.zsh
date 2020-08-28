@@ -5,7 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/bin:$HOME/usr/local/bin:/bin:$PATH"
+export GOPATH="$HOME/code/go"
+export PATH="$HOME/bin:$(go env GOPATH)/bin:$HOME/usr/local/bin:/bin:$PATH"
 export DOTFILES=$HOME/bin/dotfiles
 export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 
@@ -37,7 +38,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 precmd() {
-    source $HOME/bin/dotfiles/aliases
+    source $HOME/bin/dotfiles/zsh/aliases.zsh
 }
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
@@ -56,7 +57,7 @@ export KEYTIMEOUT=1
 # END VIM MODE ----------------------------------------------------------------
 
 #eval "$(lua ~/bin/z.lua --init zsh)"
-source $HOME/bin/dotfiles/aliases
+source $HOME/bin/dotfiles/zsh/aliases.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f "$DOTFILES/p10k.zsh" ]] || source "$DOTFILES/p10k.zsh"
+[[ ! -f "$DOTFILES/zsh/p10k.zsh" ]] || source "$DOTFILES/zsh/p10k.zsh"
