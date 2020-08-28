@@ -131,6 +131,8 @@ install_dotfiles () {
 
 install_dotfiles
 
+source ./scripts/setup.sh
+
 echo ''
 echo '  All installed!'
 
