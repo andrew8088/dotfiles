@@ -1,2 +1,0 @@
-src=$DOTFILES/alacritty/alacritty.yml
-dst=$HOME/.config/alacritty/alacritty.yml

@@ -115,14 +115,17 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for linkfile in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'link.prop' -not -path '*.git*')
+  for linkfile in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'links.prop' -not -path '*.git*')
   do
-    local src=$(prop src "$linkfile")
-    local dst=$(prop dst "$linkfile")
-    local dir=$(dirname $dst)
+    cat "$linkfile" | while read line
+    do
+        local src=$(eval echo "$line" | cut -d '=' -f 1)
+        local dst=$(eval echo "$line" | cut -d '=' -f 2)
+        local dir=$(dirname $dst)
 
-    mkdir -p "$dir"
-    link_file "$src" "$dst"
+        mkdir -p "$dir"
+        link_file "$src" "$dst"
+    done
   done
 }
 
