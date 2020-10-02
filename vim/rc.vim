@@ -23,6 +23,7 @@ call minpac#add('dbeniamine/todo.txt-vim')
 call minpac#add('voldikss/vim-floaterm')
 call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 call minpac#add('cespare/vim-toml')
+call minpac#add('tpope/vim-surround')
 
 filetype plugin indent on
 
