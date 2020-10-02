@@ -10,8 +10,9 @@ alias mvim='mvim -w ~/.vimlog "$@"'
 
 alias ta='tmux attach -t'
 
-alias l='ls -lah'
-alias sl=ls
+alias l='exa -lah'
+alias ls=exa
+alias sl=exa
 alias c='clear'
 alias s='source ~/.zshrc'
 alias h=heroku
