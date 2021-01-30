@@ -78,7 +78,7 @@ dff ()
 }
 
 
-JOBFILE="$HOME/bin/dotfiles/job-specific"
+JOBFILE="$DOTFILES/job-specific"
 if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
 fi
