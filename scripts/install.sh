@@ -132,6 +132,7 @@ install_dotfiles () {
 install_dotfiles
 
 source ./scripts/setup.sh
+source ./scripts/install-deps.sh
 
 echo ''
 echo '  All installed!'
