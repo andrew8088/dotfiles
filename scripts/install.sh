@@ -3,7 +3,7 @@
 # bootstrap installs things.
 
 cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES=$(pwd -P)
 
 set -e
 
@@ -115,7 +115,7 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for linkfile in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'links.prop' -not -path '*.git*')
+  for linkfile in $(find -H "$DOTFILES" -maxdepth 2 -name 'links.prop' -not -path '*.git*')
   do
     cat "$linkfile" | while read line
     do
@@ -129,7 +129,20 @@ install_dotfiles () {
   done
 }
 
+create_env_file () {
+    info 'creating ~/.env.sh'
+
+    if test -f "$HOME/.env.sh"; then
+        success '~/.env.sh file already exists, skipping'
+    else
+        cat "export DOTFILES=$DOTFILES" > $HOME/.env.sh
+        success 'created ~/.env.sh'
+    fi
+}
+
+
 install_dotfiles
+create_env_file
 
 source ./scripts/setup.sh
 source ./scripts/install-deps.sh
