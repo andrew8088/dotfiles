@@ -18,6 +18,10 @@ if test -f "$HOME/bin/z.sh"; then
 fi
 source $DOTFILES/zsh/history.zsh
 
+if type "direnv" > /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
