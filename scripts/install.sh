@@ -130,16 +130,13 @@ install_dotfiles () {
 }
 
 create_env_file () {
-    info 'creating ~/.env.sh'
-
     if test -f "$HOME/.env.sh"; then
         success '~/.env.sh file already exists, skipping'
     else
-        cat "export DOTFILES=$DOTFILES" > $HOME/.env.sh
+        echo "export DOTFILES=$DOTFILES" > $HOME/.env.sh
         success 'created ~/.env.sh'
     fi
 }
-
 
 install_dotfiles
 create_env_file
