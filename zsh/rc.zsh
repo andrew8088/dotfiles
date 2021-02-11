@@ -5,10 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export DOTFILES=$HOME/bin/dotfiles
-export GOPATH="$HOME/code/go"
-export PATH="$HOME/bin:$(go env GOPATH)/bin:$HOME/usr/local/bin:/bin:$PATH"
-export ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
+if test -f "$HOME/.env.sh"; then
+    source $HOME/.env.sh
+fi
 
 if test -f "$HOME/.secrets"; then
     source $HOME/.secrets
@@ -34,8 +33,9 @@ autoload -Uz compinit && compinit
 
 source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if test -v $ZSH_HIGHTLIGHT_DIR; then
+    source $ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh
+fi
 
 precmd() {
     source $DOTFILES/zsh/aliases.zsh
@@ -61,3 +61,5 @@ source $DOTFILES/zsh/aliases.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$DOTFILES/zsh/p10k.zsh" ]] || source "$DOTFILES/zsh/p10k.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
