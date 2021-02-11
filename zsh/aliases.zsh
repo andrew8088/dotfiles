@@ -1,6 +1,7 @@
 # ALIASES ---------------------------------------------------------------------
 alias unmount_all_and_exit='unmount_all && exit'
 alias d=docker
+alias dc=docker-compose
 alias hcat='highlight -O ansi'
 alias u="npm run-script unit"
 alias i="npm run-script integration"
