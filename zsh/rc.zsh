@@ -37,7 +37,8 @@ autoload -Uz compinit && compinit
 
 source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
-if test -v $ZSH_HIGHTLIGHT_DIR; then
+if test -z ${ZSH_HIGHLIGHT_DIR+x}; then
+else
     source $ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh
 fi
 
