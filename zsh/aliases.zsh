@@ -19,6 +19,7 @@ alias s='source ~/.zshrc'
 alias h=heroku
 alias jj='pbpaste | jsonpp | pbcopy'
 alias rm=trash
+alias trim="awk '{\$1=\$1;print}'"
 
 alias gst='git status'
 alias gc='git commit'
