@@ -1,8 +1,8 @@
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    source ./setup-linux.sh
+    source ./install-deps-linux.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    source ./setup-mac.sh
+    source ./install-deps-macos.sh
 fi
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
