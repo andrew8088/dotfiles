@@ -61,6 +61,12 @@ function take {
     cd $1
 }
 
+note() {
+    echo "date: $(date)" >> $HOME/drafts.txt
+    echo "$@" >> $HOME/drafts.txt
+    echo "" >> $HOME/drafts.txt
+}
+
 function unmount_all {
     diskutil list |
     grep external |
