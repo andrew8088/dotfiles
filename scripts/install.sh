@@ -142,8 +142,7 @@ install_dotfiles
 create_env_file
 
 source ./scripts/setup.sh
-source ./scripts/install-deps.sh
 
 echo ''
 echo '  All installed!'
-
+echo '  Run ./scripts/install-deps.sh to install dependencies'
