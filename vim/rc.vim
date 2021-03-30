@@ -24,6 +24,7 @@ call minpac#add('voldikss/vim-floaterm')
 call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 call minpac#add('cespare/vim-toml')
 call minpac#add('tpope/vim-surround')
+call minpac#add('mileszs/ack.vim')
 
 filetype plugin indent on
 
@@ -258,7 +259,16 @@ augroup go_stuff
     au FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 augroup END
 
+augroup markdown
+    au!
+    au FileType markdown setlocal wrap
+augroup END
+
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
