@@ -25,12 +25,14 @@ call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 call minpac#add('cespare/vim-toml')
 call minpac#add('tpope/vim-surround')
 call minpac#add('mileszs/ack.vim')
+call minpac#add('takac/vim-hardtime')
 
 filetype plugin indent on
 
 set t_Co=256
 syntax on
 let base16colorspace=256
+let g:hardtime_default_on = 1
 "colorscheme base16-eighties
 colorscheme nord
 
