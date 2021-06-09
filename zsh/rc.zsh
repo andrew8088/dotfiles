@@ -36,6 +36,9 @@ precmd() {
     source $DOTFILES/zsh/aliases.zsh
 }
 
+export VISUAL=nvim
+export EDITOR=nvim
+
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
 #bindkey -v
 # bindkey '^?' backward-delete-char
