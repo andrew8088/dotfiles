@@ -26,6 +26,7 @@ call minpac#add('cespare/vim-toml')
 call minpac#add('tpope/vim-surround')
 call minpac#add('mileszs/ack.vim')
 call minpac#add('takac/vim-hardtime')
+call minpac#add('tpope/vim-unimpaired')
 
 filetype plugin indent on
 
