@@ -18,6 +18,7 @@ source_if_exists $DOTFILES/zsh/aliases.zsh
 source_if_exists "$DOTFILES/zsh/p10k.zsh"
 source_if_exists $HOME/powerlevel10k/powerlevel10k.zsh-theme
 source_if_exists $HOME/.asdf/asdf.sh
+source_if_exists /usr/local/etc/profile.d/z.sh
 
 if type "direnv" > /dev/null; then
     eval "$(direnv hook zsh)"
