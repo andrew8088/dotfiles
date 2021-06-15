@@ -1,1 +1,1 @@
-brew cask install alacritty
+brew install alacritty
