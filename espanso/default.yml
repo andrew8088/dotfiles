@@ -1,0 +1,16 @@
+matches:
+  - trigger: ";ld"
+    replace: "[[{{mydate}}]]"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ";lk"
+    replace: "{{t}} - "
+    vars:
+      - name: t
+        type: date
+        params:
+            format: "%H:%M"
