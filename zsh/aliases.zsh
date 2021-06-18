@@ -3,8 +3,6 @@ alias unmount_all_and_exit='unmount_all && exit'
 alias d=docker
 alias dc=docker-compose
 alias hcat='highlight -O ansi'
-alias u="npm run-script unit"
-alias i="npm run-script integration"
 
 alias vim='nvim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
@@ -21,7 +19,7 @@ alias jj='pbpaste | jsonpp | pbcopy'
 alias rm=trash
 alias trim="awk '{\$1=\$1;print}'"
 
-alias gst='git status'
+alias gst='test -d .git && git status || l'
 alias gc='git commit'
 alias gco='git checkout'
 alias ga='git add'
@@ -38,7 +36,10 @@ alias gcp='git cherry-pick'
 alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
-alias grd='dff && git rebase develop'
+alias grd='mff && git rebase master'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gec='git status | grep "both modified:" | cut -d ":" -f 2 | trim | xargs nvim -'
 alias gam='gc --amend -C HEAD'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
@@ -77,10 +78,10 @@ function unmount_all {
     done
 }
 
-dff ()
+mff ()
 {
     local curr_branch=`git-current-branch`
-    gco develop
+    gco master
     ff
     gco $curr_branch
 }
