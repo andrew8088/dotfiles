@@ -4,6 +4,8 @@ alias d=docker
 alias dc=docker-compose
 alias hcat='highlight -O ansi'
 
+alias v='nvim -w ~/.vimlog "$@"'
+alias vi='nvim -w ~/.vimlog "$@"'
 alias vim='nvim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
 
@@ -36,7 +38,7 @@ alias gcp='git cherry-pick'
 alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
-alias grd='mff && git rebase master'
+alias grd='mff && git rebase origin/master'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gec='git status | grep "both modified:" | cut -d ":" -f 2 | trim | xargs nvim -'
@@ -49,10 +51,6 @@ alias gbdd='git-branch-utils -d'
 alias gbuu='git-branch-utils -u'
 alias gbrr='git-branch-utils -r -b develop'
 # FUNCTIONS -------------------------------------------------------------------
-function gcl {
-    gc -m "$(gl | head -1 | grep -o "A20-\d\d\d\d") $1"
-}
-
 function gg {
     git branch | grep "$1" | head -1 | xargs git checkout
 }
