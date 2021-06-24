@@ -35,7 +35,7 @@ draw_bold_text_with_bright_colors: true
 # Nord Theme
 colors:
   primary:
-    background: '0x2E3440'
+    background: '0x212121'
     foreground: '0xD8DEE9'
   cursor:
     text: '0x2E3440'
@@ -73,3 +73,4 @@ key_bindings:
   - { key: Q,      mods: Command,         action: Quit             }
   - { key: W,      mods: Command,         action: Quit             }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  - { key: 36,     mods: Command,         action: ToggleFullscreen }
