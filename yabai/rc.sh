@@ -47,5 +47,6 @@ yabai -m config window_gap                   3
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^[Pp]hoto [Bb]ooth$" manage=off
-yabai -m rule --add app="[Zz]oom" manage=off
+yabai -m rule --add app="[A|a]lfred" manage=off
+# yabai -m rule --add app="[Zz]oom" manage=off
 echo "yabai configuration loaded.."
