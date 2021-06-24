@@ -117,6 +117,7 @@ nnoremap <leader><space> :noh<cr>
 
 " project navigation  -----------------------------------------------------
 nnoremap <C-p> :GFiles<cr>
+nnoremap & :execute 'Ag '.expand('<cword>')<CR>
 
 " Buffers -----------------------------------------------------------------
 " This allows buffers to be hidden if you've modified a buffer.
