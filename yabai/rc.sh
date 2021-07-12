@@ -38,15 +38,16 @@ yabai -m config mouse_drop_action            stack
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  3
-yabai -m config bottom_padding               3
-yabai -m config left_padding                 3
-yabai -m config right_padding                3
-yabai -m config window_gap                   3
+yabai -m config top_padding                  2
+yabai -m config bottom_padding               2
+yabai -m config left_padding                 2
+yabai -m config right_padding                2
+yabai -m config window_gap                   2
 
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^[Pp]hoto [Bb]ooth$" manage=off
 yabai -m rule --add app="[A|a]lfred" manage=off
+yabai -m rule --add app="[A|a]nki" manage=off
 # yabai -m rule --add app="[Zz]oom" manage=off
 echo "yabai configuration loaded.."

@@ -79,7 +79,7 @@
 #ctrl + shift + alt - j : yabai -m window --swap prev || yabai -m window --swap next
 #ctrl + shift + alt - k : yabai -m window --swap prev || yabai -m window --swap next
 
-ctrl + shift + alt - y : brew services restart yabai
+ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + shift + alt - t : yabai -m window --toggle split
 
 ctrl + shift + alt - k : yabai -m window --warp north
