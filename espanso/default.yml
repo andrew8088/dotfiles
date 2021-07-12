@@ -1,3 +1,4 @@
+show_icon: false
 matches:
   - trigger: ";ld"
     replace: "[[{{mydate}}]]"
