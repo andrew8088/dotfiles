@@ -16,6 +16,7 @@ brew install the_silver_searcher
 brew install tree
 brew install youtube-dl
 brew install jsonpp
+brew install jq
 
 brew tap jakehilborn/jakehilborn
 brew install displayplacer
