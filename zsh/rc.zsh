@@ -13,6 +13,7 @@ fi
 
 source_if_exists $HOME/.env.sh
 source_if_exists $DOTFILES/zsh/history.zsh
+source_if_exists $DOTFILES/zsh/git.zsh
 source_if_exists ~/.fzf.zsh
 source_if_exists $DOTFILES/zsh/aliases.zsh
 source_if_exists "$DOTFILES/zsh/p10k.zsh"
