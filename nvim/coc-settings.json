@@ -11,5 +11,16 @@
   ],
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,
-  "prettier.disableSuccessMessage": true
+  "prettier.disableSuccessMessage": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  },
+  "snippets.textmateSnippetsRoots": ["/Users/andrew/code/dojo/api-snippets/snippets"]
 }

@@ -15,26 +15,37 @@ call minpac#add('tpope/vim-fugitive')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('janko/vim-test')
 call minpac#add('pangloss/vim-javascript')
+call minpac#add('leafgarland/typescript-vim')
+call minpac#add('MaxMEllon/vim-jsx-pretty')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('machakann/vim-highlightedyank')
-call minpac#add('HerringtonDarkholme/yats.vim')
+"call minpac#add('HerringtonDarkholme/yats.vim')
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 call minpac#add('dbeniamine/todo.txt-vim')
 call minpac#add('voldikss/vim-floaterm')
-"call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
+call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 call minpac#add('cespare/vim-toml')
 call minpac#add('tpope/vim-surround')
 call minpac#add('mileszs/ack.vim')
 call minpac#add('takac/vim-hardtime')
 call minpac#add('tpope/vim-unimpaired')
+call minpac#add('APZelos/blamer.nvim')
+call minpac#add('jvirtanen/vim-hcl')
+call minpac#add('tyru/open-browser.vim')
+call minpac#add('tyru/open-browser-github.vim')
+
+"call minpac#add('andys8/vscode-jest-snippets')
 
 filetype plugin indent on
 
 set t_Co=256
 syntax on
 let base16colorspace=256
-let g:hardtime_default_on = 1
+"let g:hardtime_default_on = 1
 "colorscheme base16-eighties
+let g:blamer_enabled = 1
+let g:blamer_relative_time = 1
+let g:openbrowser_github_always_used_branch = 'master'
 colorscheme nord
 
 set noerrorbells
@@ -144,6 +155,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
+cnoreabbrev b Buffers
+
+nnoremap <C-k> :Buffers<CR>
+
 " abbreviations -----------------------------------------------------------
 nnoremap ; :
 vnoremap ; :
@@ -203,6 +218,8 @@ set shortmess+=c
 set signcolumn=yes
 
 
+nmap <
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -233,6 +250,8 @@ nmap <leader>rn <Plug>(coc-rename)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>gh  :OpenGithubFile<cr>
 
 augroup javascript_folding
     au!
@@ -244,7 +263,21 @@ augroup todo_txt
     au filetype todo setlocal omnifunc=todo#Complete
 augroup END
 
-" run :GoBuild or :GoTestCompile based on the go file
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures
+let g:go_auto_type_info = 1
+
+" Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
@@ -254,13 +287,18 @@ function! s:build_go_files()
   endif
 endfunction
 
-let g:go_fmt_autosave = 1
+" Map keys for most used commands.
+" Ex: `\b` for building, `\r` for running and `\b` for running test.
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 augroup go_stuff
     au!
     au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
     au FileType go nmap <leader>r  <Plug>(go-run)
     au FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
+    "au FileType go autocmd BufWritePre <buffer> GoFmt
 augroup END
 
 augroup markdown
@@ -276,3 +314,16 @@ hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
