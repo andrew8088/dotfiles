@@ -9,7 +9,7 @@ cd "$NOTES_DIR"
 
 git pull --ff-only
 
-git add .obsidian
+git add .obsidian*
 git commit -m 'obsidian config'
 
 git add .
