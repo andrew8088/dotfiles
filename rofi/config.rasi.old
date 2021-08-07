@@ -1,0 +1,5 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "OperatorMono Nerd Font 24";
+}
+@import "./nord.rasi"

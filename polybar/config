@@ -1,0 +1,44 @@
+[global/wm]
+include-file = $HOME/.config/polybar/vars.ini
+include-file = $HOME/.config/polybar/nord.ini
+include-file = $HOME/.config/polybar/i3.ini
+include-file = $HOME/.config/polybar/cpu.ini
+include-file = $HOME/.config/polybar/memory.ini
+include-file = $HOME/.config/polybar/battery.ini
+include-file = $HOME/.config/polybar/date.ini
+include-file = $HOME/.config/polybar/pulseaudio.ini
+
+[bar/example]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 60
+
+font-0 = "OperatorMonoNerdFont:style=Bold:size=16;3"
+font-1 = "Material Icons Round:size=20;6"
+
+background = ${vars.alpha}
+foreground = ${colors.nord4}
+border-color = ${vars.alpha}
+border-size = 10
+border-bottom-size  = 0
+
+modules-left = i3
+modules-center = date
+modules-right = pulseaudio memory cpu battery
+
+; tray-position = left
+; tray-padding = ${vars.padding}
+; tray-background = ${colors.nord0}
+
+wm-restack = i3
+
+[settings]
+screenchange-reload = true
+; compositing-background = xor
+; compositing-background = screen
+; compositing-foreground = source
+; compositing-border = over
+pseudo-transparency = true
+
+
+; vim:ft=dosini
