@@ -21,11 +21,12 @@ alias jj='pbpaste | jsonpp | pbcopy'
 alias rm=trash
 alias trim="awk '{\$1=\$1;print}'"
 
-alias gst='test -d .git && git status || l'
+alias gst='git rev-parse --git-dir > /dev/null 2>&1 && git status || exa'
 alias gc='git commit'
 alias gco='git checkout'
 alias ga='git add'
 alias gd='git diff -w'
+alias gu='git reset --soft HEAD~1'
 alias gds='git diff -w --staged'
 alias gpr='git remote prune origin'
 alias ff='gpr && git pull --ff-only'
@@ -38,7 +39,7 @@ alias gcp='git cherry-pick'
 alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
-alias grd='mff && git rebase origin/master'
+alias grd='git fetch origin && git rebase origin/master'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gec='git status | grep "both modified:" | cut -d ":" -f 2 | trim | xargs nvim -'
