@@ -33,6 +33,8 @@ call minpac#add('APZelos/blamer.nvim')
 call minpac#add('jvirtanen/vim-hcl')
 call minpac#add('tyru/open-browser.vim')
 call minpac#add('tyru/open-browser-github.vim')
+call minpac#add('tpope/vim-eunuch')
+call minpac#add('junegunn/vim-peekaboo')
 
 "call minpac#add('andys8/vscode-jest-snippets')
 
