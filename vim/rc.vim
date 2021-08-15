@@ -35,6 +35,7 @@ call minpac#add('tyru/open-browser.vim')
 call minpac#add('tyru/open-browser-github.vim')
 call minpac#add('tpope/vim-eunuch')
 call minpac#add('junegunn/vim-peekaboo')
+call minpac#add('junegunn/goyo.vim')
 
 "call minpac#add('andys8/vscode-jest-snippets')
 
