@@ -38,8 +38,10 @@ alias gbb='git-switchbranch'
 alias gbf='git branch | head -1 | xargs' # top branch
 alias gbd='git branch -D'
 alias gcp='git cherry-pick'
-alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
-alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
+alias gl=pretty_git_log
+alias gla=pretty_git_log_all
+#alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(green)%an %ar %C(reset) %C(bold magenta)%d%C(reset)'"
+#alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias grd='git fetch origin && git rebase origin/master'
 alias grc='git rebase --continue'
