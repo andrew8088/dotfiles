@@ -79,13 +79,13 @@
 #ctrl + shift + alt - j : yabai -m window --swap prev || yabai -m window --swap next
 #ctrl + shift + alt - k : yabai -m window --swap prev || yabai -m window --swap next
 
-ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-ctrl + shift + alt - t : yabai -m window --toggle split
+# ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+# ctrl + shift + alt - t : yabai -m window --toggle split
 
-ctrl + shift + alt - k : yabai -m window --warp north
-ctrl + shift + alt - l : yabai -m window --warp east
-ctrl + shift + alt - j : yabai -m window --warp south
-ctrl + shift + alt - h : yabai -m window --warp west
+# ctrl + shift + alt - k : yabai -m window --warp north
+# ctrl + shift + alt - l : yabai -m window --warp east
+# ctrl + shift + alt - j : yabai -m window --warp south
+# ctrl + shift + alt - h : yabai -m window --warp west
 
 # focus window
 # alt - h : yabai -m window --focus west
