@@ -49,6 +49,7 @@ let base16colorspace=256
 let g:blamer_enabled = 1
 let g:blamer_relative_time = 1
 let g:openbrowser_github_always_used_branch = 'master'
+let g:peekaboo_window = 'vert bo 60new'
 colorscheme nord
 
 set noerrorbells
