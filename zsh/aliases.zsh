@@ -9,7 +9,7 @@ alias vi='nvim -w ~/.vimlog "$@"'
 alias vim='nvim -w ~/.vimlog "$@"'
 alias mvim='mvim -w ~/.vimlog "$@"'
 
-alias zn='vim $(date +"%Y%m%d%H%M.md")'
+alias zn='vim $NOTES_DIR/$(date +"%Y%m%d%H%M.md")'
 
 alias ta='tmux attach -t'
 
