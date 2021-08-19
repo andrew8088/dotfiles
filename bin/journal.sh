@@ -21,7 +21,8 @@ echo """<head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="style.css" />
 </head>
-<body>""" > "$html"
+<body>
+<section>""" > "$html"
 ag --files-with-matches "#journal" | sort | while read line
 do
     echo "<article>" >> "$html"
@@ -30,4 +31,5 @@ do
     cat "$line" | grep -v "#journal" | markdown >> "$html"
     echo "</article>" >> "$html"
 done
-echo "</body>" >> "$html"
+echo """</section>
+</body>""" >> "$html"
