@@ -7,7 +7,7 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
-" call minpac#add('arcticicestudio/nord-vim')
+call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('jgdavey/tslime.vim') "for tmux
 call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
@@ -36,7 +36,7 @@ call minpac#add('tyru/open-browser-github.vim')
 call minpac#add('tpope/vim-eunuch')
 call minpac#add('junegunn/vim-peekaboo')
 call minpac#add('junegunn/goyo.vim')
-call minpac#add('rose-pine/neovim')
+" call minpac#add('rose-pine/neovim')
 
 "call minpac#add('andys8/vscode-jest-snippets')
 
@@ -51,8 +51,8 @@ let g:blamer_enabled = 1
 let g:blamer_relative_time = 1
 let g:openbrowser_github_always_used_branch = 'master'
 let g:peekaboo_window = 'vert bo 60new'
-" colorscheme nord
-colorscheme rose-pine
+colorscheme nord
+" colorscheme rose-pine
 
 set noerrorbells
 set novisualbell
