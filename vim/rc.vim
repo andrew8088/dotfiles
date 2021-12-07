@@ -134,7 +134,8 @@ nnoremap <leader><space> :noh<cr>
 
 " project navigation  -----------------------------------------------------
 nnoremap <C-p> :GFiles<cr>
-nnoremap & :execute 'Ag '.expand('<cword>')<CR>
+command! -bang -nargs=* Agg call fzf#vim#grep('ag --nogroup --column --color -w ' . shellescape(<q-args>), 0, fzf#vim#with_preview(), <bang>0)
+nnoremap & :execute 'Agg '.expand('<cword>')<CR>
 
 " Buffers -----------------------------------------------------------------
 " This allows buffers to be hidden if you've modified a buffer.
@@ -333,3 +334,5 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+au BufNewFile,BufRead Jenkinsfile* set filetype=groovy
