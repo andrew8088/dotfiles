@@ -25,6 +25,7 @@ if type "direnv" > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+autoload -U zmv
 autoload -U promptinit && promptinit
 autoload -U colors && colors
 autoload -Uz compinit && compinit
