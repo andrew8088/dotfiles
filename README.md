@@ -1,5 +1,7 @@
 # Dotfiles
 
+[Here's a description of how my dotfiles work](https://candidcode.net/2021/02/simple-dotfiles/).
+
 ## Install
 
 ```
@@ -13,3 +15,4 @@ cd <this-repo>
 If there's customization you want ZSH to load on startup that is specific to 
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`
 and put it in there. It will be loaded near the top of `.zshrc`.
+
