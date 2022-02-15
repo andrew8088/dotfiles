@@ -55,10 +55,11 @@ alias grs='git restore --staged'
 alias gbdd='git-branch-utils -d'
 alias gbuu='git-branch-utils -u'
 alias gbrr='git-branch-utils -r -b develop'
+alias gg='git branch | fzf | xargs git checkout'
 # FUNCTIONS -------------------------------------------------------------------
-function gg {
-    git branch | grep "$1" | head -1 | xargs git checkout
-}
+# function gg {
+#     git branch | grep "$1" | head -1 | xargs git checkout
+# }
 
 function take {
     mkdir -p $1
