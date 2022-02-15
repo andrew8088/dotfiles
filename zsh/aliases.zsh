@@ -48,8 +48,10 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gec='git status | grep "both modified:" | cut -d ":" -f 2 | trim | xargs nvim -'
 alias gam='gc --amend -C HEAD'
-alias gp='git push -u'
+
+alias gp="git push -u 2>&1 | tee >(cat) | grep \"pull/new\" | awk '{print \$2}' | xargs open"
 alias gpf='git push --force-with-lease'
+
 alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias grs='git restore --staged'
 alias gbdd='git-branch-utils -d'
