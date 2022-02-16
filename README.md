@@ -1,3 +1,4 @@
+test
 # Dotfiles
 
 [Here's a description of how my dotfiles work](https://candidcode.net/2021/02/simple-dotfiles/).
