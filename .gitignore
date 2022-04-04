@@ -3,5 +3,5 @@ vim/bundle
 vim/pack/minpac/start
 **.netrwhist
 *.swp
-job-specific
+job-specific.sh
 
