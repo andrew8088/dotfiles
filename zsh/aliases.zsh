@@ -2,6 +2,7 @@
 alias unmount_all_and_exit='unmount_all && exit'
 alias d=docker
 alias dc=docker-compose
+alias dkill="pgrep \"Docker\" | xargs kill -9"
 alias hcat='highlight -O ansi'
 
 alias v='nvim -w ~/.vimlog "$@"'
@@ -93,7 +94,7 @@ mff ()
 }
 
 
-JOBFILE="$DOTFILES/job-specific"
+JOBFILE="$DOTFILES/job-specific.sh"
 if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
 fi
@@ -114,3 +115,11 @@ dreset () {
     rm -rf ~/Library/Containers/com.docker.docker/Data/*
     docker system prune -a
 }
+
+
+extract-audio-and-video () {
+    ffmpeg -i "$1" -c:a copy obs-audio.aac
+    ffmpeg -i "$1" -c:v copy obs-video.mp4
+}
+
+alias dp='displayplacer "id:83F2F7DC-590D-6294-B7FB-521754A2A693 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:BD0804E4-6EAA-1C8D-1CFB-D6B734DE10A5 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(3840,0) degree:0"'
