@@ -41,7 +41,7 @@ precmd() {
 
 export VISUAL=nvim
 export EDITOR=nvim
-export PATH="$PATH:/usr/local/sbin:$DOTFILES/bin"
+export PATH="$PATH:/usr/local/sbin:$DOTFILES/bin:$HOME/.local/bin/"
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
 #bindkey -v
