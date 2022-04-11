@@ -9,38 +9,24 @@ selection:
     save_to_clipboard: true
 
 window:
+  opacity: 1.0
   padding:
     x: 10
     y: 5
   decorations: none
 
-# font:
-#   normal:
-#     family: "OperatorMono Nerd Font"
-#     style: Book
-#   bold:
-#     family: "OperatorMono Nerd Font"
-#     style: Bold
-#   italic:
-#     family: "OperatorMono Nerd Font"
-#     style: Italic
-#   bold_italic:
-#     family: "OperatorMono Nerd Font"
-#     style: Bold Italic
-#   size: 24.0
-#   use_thin_strokes: true
 font:
   normal:
-    family: "CaskaydiaCove Nerd Font"
+    family: "Hack Nerd Font Mono"
     style: Regular
   bold:
-    family: "CaskaydiaCove Nerd Font"
+    family: "Hack Nerd Font Mono"
     style: Bold
   italic:
-    family: "CaskaydiaCove Nerd Font"
+    family: "Hack Nerd Font Mono"
     style: Italic
   bold_italic:
-    family: "CaskaydiaCove Nerd Font"
+    family: "Hack Nerd Font Mono"
     style: Bold Italic
   size: 24.0
   use_thin_strokes: true
@@ -73,44 +59,6 @@ colors:
     magenta: '0xB48EAD'
     cyan: '0x8FBCBB'
     white: '0xECEFF4'
-
-# Rose Pine Theme (https://github.com/rose-pine/alacritty)
-# colors:
-#   primary:
-#     background: '0x191724'
-#     foreground: '0xe0def4'
-#   cursor:
-#     text: '0x191724'
-#     cursor: '0x796268'
-#   vi_mode_cursor:
-#     text: '0x191724'
-#     cursor: '0x796268'
-#   line_indicator:
-#     foreground: None
-#     background: None
-#   selection:
-#     text: CellForeground
-#     background: '0x2A2738'
-#   normal:
-#     black:   '0x6e6a86'
-#     red:     '0xeb6f92'
-#     green:   '0x9ccfd8'
-#     yellow:  '0xf6c177'
-#     blue:    '0x31748f'
-#     magenta: '0xc4a7e7'
-#     cyan:    '0xebbcba'
-#     white:   '0xe0def4'
-#   bright:
-#     black:   '0x6e6a86'
-#     red:     '0xeb6f92'
-#     green:   '0x9ccfd8'
-#     yellow:  '0xf6c177'
-#     blue:    '0x31748f'
-#     magenta: '0xc4a7e7'
-#     cyan:    '0xebbcba'
-#     white:   '0xe0def4'
-
-background_opacity: 1.0
 
 cursor:
   style: Block
