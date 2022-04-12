@@ -13,6 +13,25 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "nord"
 vim.g.nord_disable_background = true
+vim.g.nord_italic = false
+
+
+vim.opt.gdefault = true
+vim.opt.ignorecase = true
+
+vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
+vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
+-- vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
+
+-- vim.cmd([[
+-- cnoreabbrev W w
+-- cnoreabbrev Wq wq
+-- cnoreabbrev WQ wq
+-- cnoreabbrev Q! q!
+-- cnoreabbrev Tabe tabe
+-- cnoreabbrev wrap set wrap
+-- cnoreabbrev nowrap set nowrap
+-- ]])
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -20,6 +39,8 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<C-h>"] = ":bprev<cr>"
+lvim.keys.normal_mode["<C-n>"] = ":NvimTreeToggle<cr>"
+lvim.keys.normal_mode[", "] = ":nohl<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
@@ -50,7 +71,7 @@ lvim.keys.normal_mode["<C-h>"] = ":bprev<cr>"
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
 --   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
 --   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+-- q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
