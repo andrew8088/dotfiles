@@ -23,15 +23,12 @@ vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 -- vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
 
--- vim.cmd([[
--- cnoreabbrev W w
--- cnoreabbrev Wq wq
--- cnoreabbrev WQ wq
--- cnoreabbrev Q! q!
--- cnoreabbrev Tabe tabe
--- cnoreabbrev wrap set wrap
--- cnoreabbrev nowrap set nowrap
--- ]])
+vim.cmd([[
+cnoreabbrev W w
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq
+cnoreabbrev Q! q!
+]])
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
