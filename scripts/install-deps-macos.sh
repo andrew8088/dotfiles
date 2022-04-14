@@ -28,3 +28,6 @@ brew install z
 brew install ksdiff
 brew install whatsapp
 brew install alt-tab
+brew install neovim
+brew install alacritty
+brew install z
