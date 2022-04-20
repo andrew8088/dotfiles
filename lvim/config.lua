@@ -12,10 +12,7 @@ an executable
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
-vim.g.nord_disable_background = true
-vim.g.nord_italic = false
-
--- vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent = true
 
 
 vim.opt.gdefault = true
