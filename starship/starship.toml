@@ -5,6 +5,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$jobs\
 $cmd_duration\
 $line_break\
 $character"""
@@ -12,6 +13,8 @@ $character"""
 [directory]
 style = "blue"
 read_only = " "
+truncation_length=4
+truncate_to_repo = false
 
 [character]
 success_symbol = "[❯](purple)"
@@ -24,8 +27,10 @@ format = "[$branch]($style)"
 style = "bright-black"
 
 [jobs]
-symbol = "j"
+symbol = ""
+style = "red"
 number_threshold = 1
+format = "[$symbol]($style) "
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
