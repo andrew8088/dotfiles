@@ -5,15 +5,19 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$jobs\
-$cmd_duration\
+$git_metrics\
+$fill\
+$cmd_duration $jobs $time\
 $line_break\
 $character"""
+
+[fill]
+symbol = " "
 
 [directory]
 style = "blue"
 read_only = " "
-truncation_length=4
+truncation_length = 4
 truncate_to_repo = false
 
 [character]
@@ -23,32 +27,36 @@ vicmd_symbol = "[❮](green)"
 
 [git_branch]
 symbol = " "
-format = "[$branch]($style)"
+format = "[$symbol$branch]($style) "
 style = "bright-black"
 
 [jobs]
 symbol = ""
-style = "red"
+style = "bold red"
 number_threshold = 1
-format = "[$symbol]($style) "
+format = "[$symbol]($style)"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = '([\[$all_status$ahead_behind\]]($style) )'
 style = "cyan"
-conflicted = ""
-untracked = ""
-modified = ""
-staged = ""
-renamed = ""
-deleted = ""
-stashed = "≡"
+# conflicted = ""
+# untracked = "+"
+# modified = "*"
+# staged = ""
+# renamed = ""
+# deleted = ""
+# stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
+[git_metrics]
+disabled = false
+
 [cmd_duration]
-format = "[$duration]($style) "
+format = "[$duration]($style)"
 style = "yellow"
 
 [docker_context]
@@ -65,3 +73,8 @@ symbol = " "
 
 [rust]
 symbol = " "
+
+[time]
+disabled = false
+style = "bold white"
+format = "[$time]($style)"
