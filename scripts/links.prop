@@ -1,0 +1,3 @@
+$DOTFILES/scripts/dark-mode-notify.plist=$HOME/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
+$DOTFILES/scripts/dark-mode-notify=$HOME/.local/bin/dark-mode-notify
+$DOTFILES/scripts/onSwitchDarkMode.sh=$HOME/.local/bin/onSwitchDarkMode.sh
