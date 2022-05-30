@@ -15,15 +15,15 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 yabai -m config window_shadow                off
-yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      0.0
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
+# yabai -m config window_opacity               off
+# yabai -m config window_opacity_duration      0.0
+# yabai -m config active_window_opacity        1.0
+# yabai -m config normal_window_opacity        0.90
 yabai -m config window_border                off
 yabai -m config window_border_width          6
 yabai -m config active_window_border_color   0xff5E81AC
@@ -38,7 +38,7 @@ yabai -m config mouse_drop_action            stack
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  2
+yabai -m config top_padding                  20
 yabai -m config bottom_padding               2
 yabai -m config left_padding                 2
 yabai -m config right_padding                2
