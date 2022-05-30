@@ -14,7 +14,6 @@ lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 vim.g.tokyonight_transparent = true
 
-
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
 
