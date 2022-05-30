@@ -87,8 +87,14 @@
 # ctrl + shift + alt - j : yabai -m window --warp south
 # ctrl + shift + alt - h : yabai -m window --warp west
 
+
+ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
+
 # focus window
-# alt - h : yabai -m window --focus west
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+alt - j : yabai -m window --focus south
+alt - h : yabai -m window --focus west
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north

@@ -1,1 +1,2 @@
 $DOTFILES/skhd/rc.sh=$HOME/.skhdrc
+$DOTFILES/skhd/cycle_counterclockwise.sh=$HOME/.local/bin/cycle_counterclockwise.sh
