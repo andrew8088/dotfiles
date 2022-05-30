@@ -1,9 +1,12 @@
 #! /bin/bash
 
-if [ $DARKMODE == 1 ]; then
-  echo "$(date): going dark"
-   /usr/local/bin/m wallpaper /System/Library/Desktop\ Pictures/Solid\ Colors/Black.png
+path=""
+
+if [ $DARKMODE = 1 ]; then
+   path="/System/Library/Desktop Pictures/Solid Colors/Black.png"
 else
-  echo "$(date): going light"
-   /usr/local/bin/m wallpaper /System/Library/Desktop\ Pictures/Solid\ Colors/Silver.png
+   path="/System/Library/Desktop Pictures/Solid Colors/Silver.png"
 fi
+
+echo "$(date): switching to $path"
+osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$path\" as POSIX file"
