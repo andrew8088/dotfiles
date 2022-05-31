@@ -4,4 +4,4 @@ vim/pack/minpac/start
 **.netrwhist
 *.swp
 job-specific.sh
-
+scripts/dark-mode-notify
