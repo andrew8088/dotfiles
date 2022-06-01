@@ -82,10 +82,10 @@
 # ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 # ctrl + shift + alt - t : yabai -m window --toggle split
 
-# ctrl + shift + alt - k : yabai -m window --warp north
-# ctrl + shift + alt - l : yabai -m window --warp east
-# ctrl + shift + alt - j : yabai -m window --warp south
-# ctrl + shift + alt - h : yabai -m window --warp west
+ctrl + shift + alt - k : yabai -m window --warp north
+ctrl + shift + alt - l : yabai -m window --warp east || yabai -m window --display next && yabai -m display --focus next
+ctrl + shift + alt - j : yabai -m window --warp south
+ctrl + shift + alt - h : yabai -m window --warp west || yabai -m window --display prev && yabai -m display --focus prev
 
 
 ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
@@ -130,7 +130,7 @@ alt - h : yabai -m window --focus west
 # ctrl + alt - 3  : yabai -m display --focus 3
 
 # send window to monitor and follow focus
-# ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
+ctrl + shift + alt - c  : yabai -m window --display prev; yabai -m display --focus prev
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 
 # move floating window
