@@ -1,3 +1,58 @@
+ctrl + shift + alt - y : brew services restart yabai
+ctrl + shift + alt - u : brew services restart skhd
+
+# move windows
+ctrl + shift + alt - k : yabai -m window --swap north
+ctrl + shift + alt - l : yabai -m window --swap east || yabai -m window --display next && yabai -m display --focus next
+ctrl + shift + alt - j : yabai -m window --swap south
+ctrl + shift + alt - h : yabai -m window --swap west || yabai -m window --display prev && yabai -m display --focus prev
+
+ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
+
+# focus window
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+alt - j : yabai -m window --focus south
+alt - h : yabai -m window --focus west
+
+# Focus window up/down in stack
+# ctrl + shift + alt - n : yabai -m window --focus stack.next
+# ctrl + shift + alt - p : yabai -m window --focus stack.prev
+rcmd - up: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+rcmd - down: yabai -m window --focus stack.next || yabai -m window --focus stack.first
+
+# Add the active window to the window or stack to the {direction}
+# Note that this only works when the active window does *not* already belong to a stack
+ctrl + shift + alt - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+ctrl + shift + alt - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+ctrl + shift + alt - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+ctrl + shift + alt - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+ctrl + shift + alt - d : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+
+# fast focus desktop
+# ctrl + shift + alt - left : yabai -m space --focus prev
+# ctrl + shift + alt - right : yabai -m space --focus next
+
+# increase window size
+shift + alt - a : yabai -m window --resize left:-20:0
+shift + alt - w : yabai -m window --resize top:0:-20
+
+# decrease window size
+shift + cmd - s : yabai -m window --resize bottom:0:-20
+shift + cmd - w : yabai -m window --resize top:0:20
+
+# toggle window zoom
+alt - d : yabai -m window --toggle zoom-parent
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle window split type
+alt - e : yabai -m window --toggle split
+
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
@@ -69,97 +124,3 @@
 #               prepend '\' at the end of the previous line.
 #
 #               an EOL character signifies the end of the bind.
-
-# ############################################################### #
-# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
-# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
-# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
-# ############################################################### #
-
-#ctrl + shift + alt - j : yabai -m window --swap prev || yabai -m window --swap next
-#ctrl + shift + alt - k : yabai -m window --swap prev || yabai -m window --swap next
-
-# ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-# ctrl + shift + alt - t : yabai -m window --toggle split
-
-ctrl + shift + alt - k : yabai -m window --warp north
-ctrl + shift + alt - l : yabai -m window --warp east || yabai -m window --display next && yabai -m display --focus next
-ctrl + shift + alt - j : yabai -m window --warp south
-ctrl + shift + alt - h : yabai -m window --warp west || yabai -m window --display prev && yabai -m display --focus prev
-
-
-ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
-
-# focus window
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-alt - j : yabai -m window --focus south
-alt - h : yabai -m window --focus west
-
-# swap managed window
-# shift + alt - h : yabai -m window --swap north
-
-# move managed window
-# shift + cmd - h : yabai -m window --warp east
-
-# balance size of windows
-# shift + alt - 0 : yabai -m space --balance
-
-# make floating window fill screen
-# shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
-
-# make floating window fill left-half of screen
-# shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-# shift + cmd - n : yabai -m space --create && \
-#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                   yabai -m window --space "${index}" && \
-#                   yabai -m space --focus "${index}"
-
-# fast focus desktop
-# cmd + alt - x : yabai -m space --focus recent
-# cmd + alt - 1 : yabai -m space --focus 1
-
-# send window to desktop and follow focus
-# shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
-# shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
-
-# focus monitor
-# ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
-
-# send window to monitor and follow focus
-ctrl + shift + alt - c  : yabai -m window --display prev; yabai -m display --focus prev
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
-
-# toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window split type
-# alt - e : yabai -m window --toggle split
-
-# float / unfloat window and center on screen
-# alt - t : yabai -m window --toggle float;\
-#           yabai -m window --grid 4:4:1:1:2:2
-
-# toggle sticky(+float), topmost, picture-in-picture
-# alt - p : yabai -m window --toggle sticky;\
-#           yabai -m window --toggle topmost;\
-#           yabai -m window --toggle pip
