@@ -39,10 +39,10 @@ yabai -m config mouse_drop_action            stack
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config top_padding                  60
-yabai -m config bottom_padding               5
-yabai -m config left_padding                 5
-yabai -m config right_padding                5
-yabai -m config window_gap                   5
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 10
+yabai -m config right_padding                10
+yabai -m config window_gap                   10
 
 
 yabai -m rule --add app="^System Preferences$" manage=off
