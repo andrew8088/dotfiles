@@ -74,6 +74,17 @@ lvim.keys.normal_mode[", "] = ":nohl<cr>"
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
 
+lvim.builtin.which_key.mappings["t"] = {
+  name = "Diagnostics",
+  t = { "<cmd>TroubleToggle<cr>", "trouble" },
+  w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+  d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
+  q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+  l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+  r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+}
+
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -125,53 +136,27 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  --   { command = "black", filetypes = { "python" } },
-  --   { command = "isort", filetypes = { "python" } },
+  { command = "prettier", filetypes = { "typescript", "typescriptreact" } }
+}
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  -- { command = "eslint_d", filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" } },
   {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    ---@usage arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    -- extra_args = { "--print-with", "100" },
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
+    command = "shellcheck",
+    extra_args = { "--severity", "warning" },
   },
 }
 
--- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "eslint", filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" } }
-  --   { command = "flake8", filetypes = { "python" } },
-  --   {
-  --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-  --     command = "shellcheck",
-  --     ---@usage arguments to pass to the formatter
-  --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-  --     extra_args = { "--severity", "warning" },
-  --   },
-  --   {
-  --     command = "codespell",
-  --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --     filetypes = { "javascript", "python" },
-  --   },
-}
-
--- Additional Plugins
 lvim.plugins = {
   { "shaunsingh/nord.nvim" },
   { "folke/tokyonight.nvim" },
-  -- { "rmehri01/onenord.nvim" },
-  -- { "Th3Whit3Wolf/one-nvim" },
-  -- { "andersevenrud/nordic.nvim" }
-  --     {"folke/tokyonight.nvim"},
-  --     {
-  --       "folke/trouble.nvim",
-  --       cmd = "TroubleToggle",
-  --     },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
