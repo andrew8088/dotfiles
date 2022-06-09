@@ -39,12 +39,16 @@ ctrl + shift + alt - d : yabai -m space --create && \
 # ctrl + shift + alt - right : yabai -m space --focus next
 
 # increase window size
-shift + alt - a : yabai -m window --resize left:-20:0
-shift + alt - w : yabai -m window --resize top:0:-20
+ctrl + alt - a : yabai -m window --resize left:50:0
+ctrl + alt - w : yabai -m window --resize top:0:50
+ctrl + alt - d : yabai -m window --resize right:50:0
+ctrl + alt - s : yabai -m window --resize bottom:0:50
 
 # decrease window size
-shift + cmd - s : yabai -m window --resize bottom:0:-20
-shift + cmd - w : yabai -m window --resize top:0:20
+shift + alt - a : yabai -m window --resize left:-50:0
+shift + alt - w : yabai -m window --resize top:0:-50
+shift + alt - d : yabai -m window --resize right:-50:0
+shift + alt - s : yabai -m window --resize bottom:0:-50
 
 # toggle window zoom
 alt - d : yabai -m window --toggle zoom-parent
