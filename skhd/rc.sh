@@ -2,10 +2,10 @@ ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + shift + alt - u : brew services restart skhd
 
 # move windows
-ctrl + shift + alt - k : yabai -m window --swap north
-ctrl + shift + alt - l : yabai -m window --swap east || yabai -m window --display next && yabai -m display --focus next
-ctrl + shift + alt - j : yabai -m window --swap south
-ctrl + shift + alt - h : yabai -m window --swap west || yabai -m window --display prev && yabai -m display --focus prev
+ctrl + shift + alt - k : yabai -m window --warp north
+ctrl + shift + alt - l : yabai -m window --warp east || yabai -m window --display next && yabai -m display --focus next
+ctrl + shift + alt - j : yabai -m window --warp south
+ctrl + shift + alt - h : yabai -m window --warp west || yabai -m window --display prev && yabai -m display --focus prev
 
 ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
 
@@ -57,8 +57,8 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # toggle window split type
 alt - e : yabai -m window --toggle split
 
-lshift + lcmd + lctrl + lalt - y: "$DOTFILES/scripts/yt.sh"
-lshift + lcmd + lctrl + lalt - s: osascript "$DOTFILES/scripts/slack-all-unread.applescript"
+hyper - y: "$DOTFILES/scripts/yt.sh"
+hyper - s: osascript "$DOTFILES/scripts/slack-all-unread.applescript"
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
