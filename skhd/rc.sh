@@ -1,4 +1,4 @@
-ctrl + shift + alt - y : brew services restart yabai
+ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + shift + alt - u : brew services restart skhd
 
 # move windows
