@@ -57,6 +57,8 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # toggle window split type
 alt - e : yabai -m window --toggle split
 
+lshift + lcmd + lctrl + lalt - y: $DOTFILES/scripts/yt.sh
+
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
