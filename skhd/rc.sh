@@ -57,7 +57,8 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # toggle window split type
 alt - e : yabai -m window --toggle split
 
-lshift + lcmd + lctrl + lalt - y: $DOTFILES/scripts/yt.sh
+lshift + lcmd + lctrl + lalt - y: "$DOTFILES/scripts/yt.sh"
+lshift + lcmd + lctrl + lalt - s: osascript "$DOTFILES/scripts/slack-all-unread.applescript"
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
