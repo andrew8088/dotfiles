@@ -286,13 +286,7 @@
               },
               "to": [
                 {
-                  "key_code": "o",
-                  "modifiers": [
-                    "left_shift",
-                    "left_command",
-                    "left_control",
-                    "left_option"
-                  ]
+                  "shell_command": "open /Applications/Obsidian.app"
                 }
               ]
             },
