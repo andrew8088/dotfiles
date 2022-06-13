@@ -54,6 +54,7 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^[Pp]hoto [Bb]ooth$" manage=off
 yabai -m rule --add app="[A|a]lfred" manage=off
 yabai -m rule --add app="[A|a]nki" manage=off
+yabai -m rule --add app="Pritunl" manage=off
 
 yabai -m rule --add app="Firefox" space=^web
 yabai -m rule --add app="Obsidian" space=^code
