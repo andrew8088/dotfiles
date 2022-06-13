@@ -58,7 +58,8 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt - e : yabai -m window --toggle split
 
 hyper - y: "$DOTFILES/scripts/yt.sh"
-hyper - s: osascript "$DOTFILES/scripts/slack-all-unread.applescript"
+hyper - s: "$DOTFILES/scripts/send-keys.js" "Slack" "A" "command down"
+hyper - t: "$DOTFILES/scripts/send-keys.js" "Slack" "T" "command down"
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
