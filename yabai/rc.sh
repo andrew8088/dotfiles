@@ -34,7 +34,7 @@ yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               ctrl
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
-yabai -m config mouse_drop_action            stack
+# yabai -m config mouse_drop_action            stack
 
 # general space settings
 yabai -m config layout                       bsp
