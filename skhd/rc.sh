@@ -60,6 +60,7 @@ alt - e : yabai -m window --toggle split
 hyper - y: "$DOTFILES/scripts/yt.sh"
 hyper - s: "$DOTFILES/scripts/send-keys.js" "Slack" "A" "command down"
 hyper - t: "$DOTFILES/scripts/send-keys.js" "Slack" "T" "command down"
+hyper - m: "osascript $DOTFILES/scripts/macos-hide-menubar.applescript"
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
