@@ -7,9 +7,13 @@ $git_state\
 $git_status\
 $git_metrics\
 $fill\
+$nodejs\
 $cmd_duration $jobs $time\
 $line_break\
 $character"""
+
+[nodejs]
+format = "[$symbol($version )]($style)"
 
 [fill]
 symbol = " "
