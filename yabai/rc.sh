@@ -46,8 +46,8 @@ yabai -m config window_gap                   10
 
 
 # spaces
-yabai -m space 1 --label web
-yabai -m space 2 --label code
+yabai -m space 1 --label code
+yabai -m space 2 --label web
 yabai -m space 3 --label fcp
 
 yabai -m rule --add app="^System Preferences$" manage=off
