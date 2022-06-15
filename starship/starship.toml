@@ -37,16 +37,8 @@ number_threshold = 1
 format = "[$symbol]($style)"
 
 [git_status]
-# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 format = '([\[$all_status$ahead_behind\]]($style) )'
 style = "cyan"
-# conflicted = ""
-# untracked = "+"
-# modified = "*"
-# staged = ""
-# renamed = ""
-# deleted = ""
-# stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
@@ -59,17 +51,8 @@ disabled = false
 format = "[$duration]($style)"
 style = "yellow"
 
-[docker_context]
-symbol = " "
-
-[golang]
-symbol = " "
-
 [memory_usage]
 symbol = " "
-
-[nodejs]
-symbol = " "
 
 [rust]
 symbol = " "
