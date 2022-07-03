@@ -3,9 +3,15 @@ ctrl + shift + alt - u : brew services restart skhd
 
 # move windows
 ctrl + shift + alt - k : yabai -m window --warp north
-ctrl + shift + alt - l : yabai -m window --warp east || yabai -m window --display next && yabai -m display --focus next
+ctrl + shift + alt - l : yabai -m window --warp east
 ctrl + shift + alt - j : yabai -m window --warp south
-ctrl + shift + alt - h : yabai -m window --warp west || yabai -m window --display prev && yabai -m display --focus prev
+ctrl + shift + alt - h : yabai -m window --warp west
+
+
+ctrl + shift + alt - a : yabai -m window --display next && yabai -m display --focus next
+ctrl + shift + alt - d : yabai -m window --display prev && yabai -m display --focus prev
+
+
 
 ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
 
