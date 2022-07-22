@@ -45,16 +45,16 @@ yabai -m config right_padding                10
 yabai -m config window_gap                   10
 
 # spaces
-if [ "$hostname" = "studio.local" ] 
-then
-  yabai -m space 1 --label code
-  yabai -m space 2 --label web
-  yabai -m space 3 --label fcp
-else
-  yabai -m space 1 --label code
-  yabai -m space 2 --label fcp
-  yabai -m space 3 --label web
-fi
+# if [ "$hostname" = "studio.local" ] 
+# then
+#   yabai -m space 1 --label code
+#   yabai -m space 2 --label web
+#   yabai -m space 3 --label fcp
+# else
+#   yabai -m space 1 --label code
+#   yabai -m space 2 --label fcp
+#   yabai -m space 3 --label web
+# fi
 
 
 yabai -m rule --add app="^System Preferences$" manage=off
@@ -62,11 +62,10 @@ yabai -m rule --add app="^[Pp]hoto [Bb]ooth$" manage=off
 yabai -m rule --add app="[A|a]lfred" manage=off
 yabai -m rule --add app="[A|a]nki" manage=off
 yabai -m rule --add app="Pritunl" manage=off
-
-yabai -m rule --add app="Firefox" space=^web
-yabai -m rule --add app="Obsidian" space=^code
-yabai -m rule --add app="Alacritty" space=^code
-yabai -m rule --add app="Final Cut Pro" space=^fcp
-yabai -m rule --add app="[Zz]oom" manage=off
+# yabai -m rule --add app="[Zz]oom" manage=off
+# yabai -m rule --add app="Firefox" space=^web
+# yabai -m rule --add app="Obsidian" space=^code
+# yabai -m rule --add app="Alacritty" space=^code
+# yabai -m rule --add app="Final Cut Pro" space=^fcp
 echo "yabai configuration loaded.."
 
