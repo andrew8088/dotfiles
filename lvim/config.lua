@@ -16,6 +16,7 @@ vim.g.tokyonight_transparent = true
 
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
+vim.opt.linebreak = true
 
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
@@ -74,6 +75,7 @@ lvim.keys.normal_mode[", "] = ":nohl<cr>"
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
 
+lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "ToggleFormatOnSave" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
