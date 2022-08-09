@@ -55,11 +55,11 @@ alias gam='gc --amend -C HEAD'
 alias gp="git push -u 2>&1 | tee >(cat) | grep \"pull/new\" | awk '{print \$2}' | xargs open"
 alias gpf='git push --force-with-lease'
 
-alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
 alias gbdd='git-branch-utils -d'
 alias gbuu='git-branch-utils -u'
 alias gbrr='git-branch-utils -r -b develop'
 alias gg='git branch | fzf | xargs git checkout'
+alias gup='git branch --set-upstream-to=origin/$(git-current-branch) $(git-current-branch)'
 # FUNCTIONS -------------------------------------------------------------------
 # function gg {
 #     git branch | grep "$1" | head -1 | xargs git checkout
@@ -93,6 +93,7 @@ mff ()
     ff
     gco $curr_branch
 }
+
 
 
 JOBFILE="$DOTFILES/job-specific.sh"
