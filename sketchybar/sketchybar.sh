@@ -1,8 +1,6 @@
 ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-                 # color=0xff24283b              \
-
 sketchybar \
 --bar \
 height=50 \
