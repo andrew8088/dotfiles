@@ -2,3 +2,5 @@ $DOTFILES/scripts/dark-mode-notify.plist=$HOME/Library/LaunchAgents/ke.bou.dark-
 $DOTFILES/scripts/dark-mode-notify=$HOME/.local/bin/dark-mode-notify
 $DOTFILES/scripts/onSwitchDarkMode.sh=$HOME/.local/bin/onSwitchDarkMode.sh
 $DOTFILES/scripts/gbm.sh=$HOME/.local/bin/gbm
+$DOTFILES/scripts/epdir.sh=$HOME/.local/bin/epdir.sh
+$DOTFILES/scripts/gum-colors.sh=$HOME/.local/bin/gum-colors
