@@ -8,9 +8,9 @@ git_color_text () {
 
 get_branches () {
   if [ ${1+x} ]; then
-    gum choose --limit="$1" $(git branch --format="%(refname:short)")
+    gum choose --selected.foreground="$GIT_COLOR" --limit="$1" $(git branch --format="%(refname:short)")
   else
-    gum choose --no-limit $(git branch --format="%(refname:short)")
+    gum choose --selected.foreground="$GIT_COLOR" --no-limit $(git branch --format="%(refname:short)")
   fi
 }
 
@@ -34,7 +34,7 @@ branches=$(get_branches)
 
 echo ""
 echo "Choose a $(git_color_text "command"):"
-command=$(gum choose rebase delete update)
+command=$(gum choose --cursor.foreground="$GIT_COLOR" rebase delete update)
 echo ""
 
 echo $branches | tr " " "\n" | while read -r branch
