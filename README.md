@@ -1,6 +1,6 @@
 # Dotfiles
 
-[Here's a description of how my dotfiles work](https://candidcode.net/2021/02/simple-dotfiles/).
+[Here's a description of how my dotfiles work](https://shaky.sh/simple-dotfiles/).
 
 ## Install
 
