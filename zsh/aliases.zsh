@@ -126,5 +126,10 @@ extract-audio-and-video () {
 
 alias epdir='cd `epdir.sh`'
 
+
+hs () {
+ curl https://httpstat.us/$1
+}
+
 # alias dp='displayplacer "id:83F2F7DC-590D-6294-B7FB-521754A2A693 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:BD0804E4-6EAA-1C8D-1CFB-D6B734DE10A5 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(3840,0) degree:0"'
 # alias mirror-displays='displayplacer "id:C3F5FA73-E883-4B6D-88B3-DA6D6A8192B3+7ECC0B33-A07B-46A6-AFB8-565FEFE68216 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0"'

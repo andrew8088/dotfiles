@@ -38,8 +38,8 @@ export PATH="$PATH:/usr/local/sbin:$DOTFILES/bin:$HOME/.local/bin"
 eval "$(starship init zsh)"
 
 # VIM MODE (http://dougblack.io/words/zsh-vi-mode.html) -----------------------
-#bindkey -v
-# bindkey '^?' backward-delete-char
+# bindkey -v
+bindkey '^?' backward-delete-char
 
 # function zle-line-init zle-keymap-select {
 #     VIM_PROMPT="%{$fg[yellow]%}[% NORMAL]% %{$reset_color%}"
