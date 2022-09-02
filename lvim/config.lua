@@ -147,6 +147,7 @@ lvim.plugins = {
   { "ledger/vim-ledger" },
   { "shaunsingh/nord.nvim" },
   { "folke/tokyonight.nvim" },
+  { "tpope/vim-eunuch" },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
