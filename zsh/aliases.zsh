@@ -135,9 +135,9 @@ hs () {
 # alias mirror-displays='displayplacer "id:C3F5FA73-E883-4B6D-88B3-DA6D6A8192B3+7ECC0B33-A07B-46A6-AFB8-565FEFE68216 res:3840x2160 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0"'
 
 copy-line () {
-  rg --line-number . | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print $3}' | sed 's/^\s+//' | pbcopy
+  rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print $3}' | sed 's/^\s+//' | pbcopy
 }
 
 open-at-line () {
-  vim $(rg --line-number . | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
+  vim $(rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
