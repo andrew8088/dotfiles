@@ -30,15 +30,19 @@ fail () {
 link_file () {
   local src=$1 dst=$2
 
-  local overwrite= backup= skip=
+  local overwrite=
+  local backup=
+  local skip=
   local action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
   then
 
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
 
+      # ignoring exit 1 from readlink in case where file already exists
+      # shellcheck disable=SC2155
       local currentSrc="$(readlink $dst)"
 
       if [ "$currentSrc" == "$src" ]
@@ -106,7 +110,7 @@ link_file () {
 prop () {
    PROP_KEY=$1
    PROP_FILE=$2
-   PROP_VALUE=$(eval echo $(cat $PROP_FILE | grep "$PROP_KEY" | cut -d'=' -f2))
+   PROP_VALUE=$(eval echo "$(cat $PROP_FILE | grep "$PROP_KEY" | cut -d'=' -f2)")
    echo $PROP_VALUE
 }
 
@@ -115,13 +119,14 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for linkfile in $(find -H "$DOTFILES" -maxdepth 2 -name 'links.prop' -not -path '*.git*')
+  find -H "$DOTFILES" -maxdepth 2 -name 'links.prop' -not -path '*.git*' | while read linkfile
   do
     cat "$linkfile" | while read line
     do
-        local src=$(eval echo "$line" | cut -d '=' -f 1)
-        local dst=$(eval echo "$line" | cut -d '=' -f 2)
-        local dir=$(dirname $dst)
+        local src dst dir
+        src=$(eval echo "$line" | cut -d '=' -f 1)
+        dst=$(eval echo "$line" | cut -d '=' -f 2)
+        dir=$(dirname $dst)
 
         mkdir -p "$dir"
         link_file "$src" "$dst"
@@ -131,7 +136,7 @@ install_dotfiles () {
 
 create_env_file () {
     if test -f "$HOME/.env.sh"; then
-        success '~/.env.sh file already exists, skipping'
+        success "$HOME/.env.sh file already exists, skipping"
     else
         echo "export DOTFILES=$DOTFILES" > $HOME/.env.sh
         success 'created ~/.env.sh'
