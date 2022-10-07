@@ -7,7 +7,7 @@ vim.g.tokyonight_transparent = true
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
 vim.opt.linebreak = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
