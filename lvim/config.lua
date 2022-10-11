@@ -2,12 +2,10 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
-vim.g.tokyonight_transparent = true
 
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
 vim.opt.linebreak = true
--- vim.opt.relativenumber = true
 
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
@@ -147,7 +145,14 @@ linters.setup {
 lvim.plugins = {
   { "ledger/vim-ledger" },
   { "shaunsingh/nord.nvim" },
-  { "folke/tokyonight.nvim" },
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      require('tokyonight').setup({
+        transparent = true
+      })
+    end
+  },
   { "tpope/vim-eunuch" },
   {
     "folke/trouble.nvim",
