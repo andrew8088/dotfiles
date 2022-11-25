@@ -28,6 +28,5 @@ while read line; do
   echo "$d $store"
   echo "  e:   $cost"
   echo "  c:rbc:Visa"
-  echo "  b:rbc:Chequing:General"
   echo ""
 done
