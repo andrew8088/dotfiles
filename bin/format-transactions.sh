@@ -28,5 +28,4 @@ while read line; do
   echo "$d $store"
   echo "  e:   $cost"
   echo "  c:rbc:Visa"
-  echo ""
 done
