@@ -60,6 +60,10 @@ alias gbuu='git-branch-utils -u'
 alias gbrr='git-branch-utils -r -b develop'
 alias gg='git branch | fzf | xargs git checkout'
 alias gup='git branch --set-upstream-to=origin/$(git-current-branch) $(git-current-branch)'
+
+alias gnext='git log --ancestry-path --format=%H ${commit}..master | tail -1 | xargs git checkout'
+alias gprev='git checkout HEAD^'
+
 # FUNCTIONS -------------------------------------------------------------------
 # function gg {
 #     git branch | grep "$1" | head -1 | xargs git checkout

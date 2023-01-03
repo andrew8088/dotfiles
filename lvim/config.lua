@@ -158,6 +158,7 @@ lvim.plugins = {
     end
   },
   { "tpope/vim-eunuch" },
+  -- { "github/copilot.vim" },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
