@@ -25,7 +25,7 @@ while read line; do
   store=$(echo $store | cut -d '#' -f 1 | cut -d ',' -f 1 | cap)
   cost=$(echo $line | cut -d '|' -f 3)
 
-  echo "$d $store"
+  echo "$d * $store"
   echo "  e:   $cost"
   echo "  c:rbc:Visa"
 done
