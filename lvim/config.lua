@@ -51,6 +51,9 @@ lvim.keys.normal_mode[", "] = ":nohl<cr>"
 --   },
 -- }
 
+lvim.builtin.gitsigns.active = true;
+lvim.builtin.gitsigns.opts.current_line_blame = true;
+
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["k"] = { "<cmd>Telescope buffers<CR>", "Search Buffers" }
 lvim.builtin.which_key.mappings["g"] = { "<cmd>Telescope grep_string<CR>", "Grep in dir" }
