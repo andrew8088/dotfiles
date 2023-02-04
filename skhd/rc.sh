@@ -1,67 +1,67 @@
-ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-ctrl + shift + alt - u : brew services restart skhd
+# ctrl + shift + alt - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+# ctrl + shift + alt - u : brew services restart skhd
 
-# move windows
-ctrl + shift + alt - k : yabai -m window --warp north
-ctrl + shift + alt - l : yabai -m window --warp east
-ctrl + shift + alt - j : yabai -m window --warp south
-ctrl + shift + alt - h : yabai -m window --warp west
-
-
-ctrl + shift + alt - a : yabai -m window --display next && yabai -m display --focus next
-ctrl + shift + alt - d : yabai -m window --display prev && yabai -m display --focus prev
+# # move windows
+# ctrl + shift + alt - k : yabai -m window --warp north
+# ctrl + shift + alt - l : yabai -m window --warp east
+# ctrl + shift + alt - j : yabai -m window --warp south
+# ctrl + shift + alt - h : yabai -m window --warp west
 
 
+# ctrl + shift + alt - a : yabai -m window --display next && yabai -m display --focus next
+# ctrl + shift + alt - d : yabai -m window --display prev && yabai -m display --focus prev
 
-ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
 
-# focus window
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-alt - j : yabai -m window --focus south
-alt - h : yabai -m window --focus west
 
-# Focus window up/down in stack
-# ctrl + shift + alt - n : yabai -m window --focus stack.next
-# ctrl + shift + alt - p : yabai -m window --focus stack.prev
-rcmd - up: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-rcmd - down: yabai -m window --focus stack.next || yabai -m window --focus stack.first
+# ctrl + alt - c : ~/.local/bin/cycle_counterclockwise.sh
 
-# Add the active window to the window or stack to the {direction}
-# Note that this only works when the active window does *not* already belong to a stack
-ctrl + shift + alt - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
-ctrl + shift + alt - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
-ctrl + shift + alt - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
-ctrl + shift + alt - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
+# # focus window
+# alt - k : yabai -m window --focus north
+# alt - l : yabai -m window --focus east
+# alt - j : yabai -m window --focus south
+# alt - h : yabai -m window --focus west
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-ctrl + shift + alt - d : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+# # Focus window up/down in stack
+# # ctrl + shift + alt - n : yabai -m window --focus stack.next
+# # ctrl + shift + alt - p : yabai -m window --focus stack.prev
+# rcmd - up: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+# rcmd - down: yabai -m window --focus stack.next || yabai -m window --focus stack.first
 
-# fast focus desktop
-# ctrl + shift + alt - left : yabai -m space --focus prev
-# ctrl + shift + alt - right : yabai -m space --focus next
+# # Add the active window to the window or stack to the {direction}
+# # Note that this only works when the active window does *not* already belong to a stack
+# ctrl + shift + alt - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+# ctrl + shift + alt - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+# ctrl + shift + alt - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+# ctrl + shift + alt - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
 
-# increase window size
-ctrl + alt - a : yabai -m window --resize left:50:0
-ctrl + alt - w : yabai -m window --resize top:0:50
-ctrl + alt - d : yabai -m window --resize right:50:0
-ctrl + alt - s : yabai -m window --resize bottom:0:50
+# # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+# ctrl + shift + alt - d : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
 
-# decrease window size
-shift + alt - a : yabai -m window --resize left:-50:0
-shift + alt - w : yabai -m window --resize top:0:-50
-shift + alt - d : yabai -m window --resize right:-50:0
-shift + alt - s : yabai -m window --resize bottom:0:-50
+# # fast focus desktop
+# # ctrl + shift + alt - left : yabai -m space --focus prev
+# # ctrl + shift + alt - right : yabai -m space --focus next
 
-# toggle window zoom
-alt - d : yabai -m window --toggle zoom-parent
-alt - f : yabai -m window --toggle zoom-fullscreen
+# # increase window size
+# ctrl + alt - a : yabai -m window --resize left:50:0
+# ctrl + alt - w : yabai -m window --resize top:0:50
+# ctrl + alt - d : yabai -m window --resize right:50:0
+# ctrl + alt - s : yabai -m window --resize bottom:0:50
 
-# toggle window split type
-alt - e : yabai -m window --toggle split
+# # decrease window size
+# shift + alt - a : yabai -m window --resize left:-50:0
+# shift + alt - w : yabai -m window --resize top:0:-50
+# shift + alt - d : yabai -m window --resize right:-50:0
+# shift + alt - s : yabai -m window --resize bottom:0:-50
+
+# # toggle window zoom
+# alt - d : yabai -m window --toggle zoom-parent
+# alt - f : yabai -m window --toggle zoom-fullscreen
+
+# # toggle window split type
+# alt - e : yabai -m window --toggle split
 
 hyper - y: "$DOTFILES/scripts/yt.sh"
 hyper - s: "$DOTFILES/scripts/send-keys.js" "Slack" "A" "command down"
