@@ -1,13 +1,10 @@
 live_config_reload: true
-
 scrolling:
     history: 10000
     multiplier: 10
-
 selection:
     semantic_escape_chars: '|:"'' {}()[]<>'
     save_to_clipboard: true
-
 window:
   opacity: 1.0
   padding:
