@@ -7,7 +7,7 @@
 ```
 git clone <this-repo>
 cd <this-repo>
-./scripts/bootstrap.sh
+./install/bootstrap.sh
 ```
 
 ## Local ZSH Config
