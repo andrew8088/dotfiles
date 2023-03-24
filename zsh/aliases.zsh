@@ -145,3 +145,7 @@ copy-line () {
 open-at-line () {
   vim $(rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
+
+alias ledger='ledger -f "$(find $NOTES_DIR -name transactions.ledger)"'
+
+alias yip='yarn install --pure-lockfile'
