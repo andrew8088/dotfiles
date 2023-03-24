@@ -10,6 +10,9 @@ vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 
+require('tokyonight').setup({
+  transparent = true
+})
 
 -- vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
 
@@ -177,6 +180,15 @@ lvim.plugins = {
         }
       }
     end
+  },
+  {
+    "github/copilot.vim",
+  },
+  {
+    "tpope/vim-fugitive"
+  },
+  {
+    "tpope/vim-rhubarb"
   }
 }
 
