@@ -5,3 +5,4 @@ vim/pack/minpac/start
 *.swp
 job-specific.sh
 scripts/dark-mode-notify
+bin/format-transactions.js
