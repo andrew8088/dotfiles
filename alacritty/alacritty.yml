@@ -14,18 +14,18 @@ window:
 
 font:
   normal:
-    family: "Hack Nerd Font Mono"
+    family: "Liga SFMono Nerd Font"
     style: Regular
   bold:
-    family: "Hack Nerd Font Mono"
+    family: "Liga SFMono Nerd Font"
     style: Bold
   italic:
-    family: "Hack Nerd Font Mono"
+    family: "Liga SFMono Nerd Font"
     style: Italic
   bold_italic:
-    family: "Hack Nerd Font Mono"
+    family: "Liga SFMono Nerd Font"
     style: Bold Italic
-  size: 24.0
+  size: 20.0
   # use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: true
