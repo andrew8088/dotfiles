@@ -117,6 +117,29 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
 
+
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+
+local capabilities = require("lvim.lsp").common_capabilities()
+
+-- nvim-ufo
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
+require("typescript").setup({
+  server = {
+    capabilities = capabilities,
+    root_dir = require("lspconfig").util.root_pattern(".git"),
+  },
+})
+
+local null_ls = require("null-ls")
+null_ls.register({
+  require("typescript.extensions.null-ls.code-actions")
+})
+
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = false
 
@@ -140,7 +163,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "prettier", filetypes = { "typescript", "typescriptreact" } }
+  { command = "prettier", filetypes = { "typescript", "typescriptreact", "javascript" } }
 }
 
 local linters = require "lvim.lsp.null-ls.linters"
@@ -189,6 +212,15 @@ lvim.plugins = {
   },
   {
     "tpope/vim-rhubarb"
+  },
+  {
+    "prisma/vim-prisma"
+  },
+  {
+    "jose-elias-alvarez/typescript.nvim"
+  },
+  {
+    "tpope/vim-fugitive"
   }
 }
 
@@ -196,3 +228,25 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.ledger",
   command = "LedgerAlignBuffer",
 })
+
+
+
+-- local function organize_imports()
+--   local params = {
+--     command = "_typescript.organizeImports",
+--     arguments = { vim.api.nvim_buf_get_name(0) },
+--     title = ""
+--   }
+--   vim.lsp.buf.execute_command(params)
+-- end
+
+-- lspconfig.tsserver.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   commands = {
+--     OrganizeImports = {
+--       organize_imports,
+--       description = "Organize Imports"
+--     }
+--   }
+-- }
