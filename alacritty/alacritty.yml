@@ -1,3 +1,16 @@
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 1.0
+  padding:
+    x: 5
+    y: 5
+  decorations: none
+
 live_config_reload: true
 scrolling:
     history: 10000
@@ -5,12 +18,6 @@ scrolling:
 selection:
     semantic_escape_chars: '|:"'' {}()[]<>'
     save_to_clipboard: true
-window:
-  opacity: 1.0
-  padding:
-    x: 10
-    y: 5
-  decorations: none
 
 font:
   normal:
@@ -20,7 +27,7 @@ font:
     family: "MonoLisaVariable Nerd Font"
     style: Bold
   italic:
-    family: "MonoLisaVariable Nerd Font"
+    family: "MonoLisaScript Nerd Font"
     style: Italic
   bold_italic:
     family: "MonoLisaVariable Nerd Font"
@@ -29,72 +36,6 @@ font:
   # use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: true
-
-# TokyoNight Alacritty Colors
-colors:
-  # Default colors
-  primary:
-    background: '0x1a1b26'
-    foreground: '0xc0caf5'
-
-  # Normal colors
-  normal:
-    black:   '0x15161E'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xa9b1d6'
-
-  # Bright colors
-  bright:
-    black:   '0x414868'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xc0caf5'
-
-  indexed_colors:
-    - { index: 16, color: '0xff9e64' }
-    - { index: 17, color: '0xdb4b4b' }
-
-# TokyoNight Day Alacritty Colors
-# colors:
-#   # Default colors
-#   primary:
-#     background: '0xe1e2e7'
-#     foreground: '0x3760bf'
-
-#   # Normal colors
-#   normal:
-#     black:   '0xe9e9ed'
-#     red:     '0xf52a65'
-#     green:   '0x587539'
-#     yellow:  '0x8c6c3e'
-#     blue:    '0x2e7de9'
-#     magenta: '0x9854f1'
-#     cyan:    '0x007197'
-#     white:   '0x6172b0'
-
-#   # Bright colors
-#   bright:
-#     black:   '0xa1a6c5'
-#     red:     '0xf52a65'
-#     green:   '0x587539'
-#     yellow:  '0x8c6c3e'
-#     blue:    '0x2e7de9'
-#     magenta: '0x9854f1'
-#     cyan:    '0x007197'
-#     white:   '0x3760bf'
-
-#   indexed_colors:
-#     - { index: 16, color: '0xb15c00' }
-#     - { index: 17, color: '0xc64343' }
 
 cursor:
   style: Block
@@ -105,31 +46,3 @@ key_bindings:
   - { key: Q,      mods: Command,         action: Quit             }
   - { key: W,      mods: Command,         action: Quit             }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
-
-# Nord Theme
-# colors:
-#   primary:
-#     background: '0x212121'
-#     foreground: '0xD8DEE9'
-#   cursor:
-#     text: '0x2E3440'
-#     cursor: '0xD8DEE9'
-#   normal:
-#     black: '0x3B4252'
-#     red: '0xBF616A'
-#     green: '0xA3BE8C'
-#     yellow: '0xEBCB8B'
-#     blue: '0x81A1C1'
-#     magenta: '0xB48EAD'
-#     cyan: '0x88C0D0'
-#     white: '0xE5E9F0'
-#   bright:
-#     black: '0x4C566A'
-#     red: '0xBF616A'
-#     green: '0xA3BE8C'
-#     yellow: '0xEBCB8B'
-#     blue: '0x81A1C1'
-#     magenta: '0xB48EAD'
-#     cyan: '0x8FBCBB'
-#     white: '0xECEFF4'
-
