@@ -3,12 +3,6 @@ local null_ls = require("null-ls")
 local navic = require("nvim-navic")
 local lspconfig = require("lspconfig");
 
--- require("lspconfig").setup({
---     on_attach = function(client, bufnr)
---         navic.attach(client, bufnr)
---     end
--- })
-
 lsp.preset('recommended')
 
 lsp.ensure_installed({
@@ -39,18 +33,10 @@ lsp.set_preferences({
 	suggest_lsp_servers = false,
 })
 
--- lsp.format_on_save({
--- 	servers = {
--- 		["eslint"] = { "javascript" },
--- 		["lua_ls"] = { "lua" },
--- 		["tsserver"] = { "typescript" },
--- 		["rust_analyzer"] = { "rust" },
--- 	},
--- })
-
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
+    -- navic.attach(client, bufnr)
 	-- configured by Trouble
 	-- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	-- vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
@@ -63,6 +49,10 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+local capabilities = require'cmp_nvim_lsp'.default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
 -- from https://github.com/VonHeikemen/lsp-zero.nvim/issues/17
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
@@ -79,17 +69,27 @@ local null_opts = lsp.build_options('null-ls', {
 		})
 	end
 })
---
+
 -- lspconfig.denols.setup {
---   on_attach = lsp.on_attach,
---   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+--   root_dir = lspconfig.util.root_pattern("deno.jsonc", "deno.json"),
 -- }
 --
--- lspconfig.tsserver.setup {
---   on_attach = lsp.on_attach,
---   root_dir = lspconfig.util.root_pattern("package.json"),
---   single_file_support = false
--- }
+-- require("deno-nvim").setup({
+--   server = {
+--     on_attach = lsp.on_attach,
+--     capabilites = capabilities
+--   },
+-- })
+
+lspconfig.tsserver.setup {
+  root_dir = function(fname)
+	  return not lspconfig.util.root_pattern("deno.jsonc", "deno.json")(fname) and lspconfig.util.root_pattern("package.json")(fname)
+  end
+}
+
+lspconfig.tailwindcss.setup({
+	root_dir = lspconfig.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts')
+});
 
 null_ls.setup({
 	on_attach = null_opts.on_attach,

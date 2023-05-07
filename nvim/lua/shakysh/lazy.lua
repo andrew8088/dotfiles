@@ -39,6 +39,7 @@ require("lazy").setup({
     { "jose-elias-alvarez/typescript.nvim" },
     { "jose-elias-alvarez/null-ls.nvim" },
     { "folke/trouble.nvim" },
+    { "sigmasd/deno-nvim" },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
