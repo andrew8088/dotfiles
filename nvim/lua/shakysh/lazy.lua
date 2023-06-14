@@ -40,6 +40,9 @@ require("lazy").setup({
     { "jose-elias-alvarez/null-ls.nvim" },
     { "folke/trouble.nvim" },
     { "sigmasd/deno-nvim" },
+    { "ledger/vim-ledger" },
+    { "crispgm/cmp-beancount" },
+    { "nathangrigg/vim-beancount" },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
