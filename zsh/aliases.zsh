@@ -149,3 +149,5 @@ open-at-line () {
 alias ledger='ledger -f "$(find $NOTES_DIR -name transactions.ledger)"'
 
 alias yip='yarn install --pure-lockfile'
+
+alias dark="$DOTFILES/bin/toggle-terminal-dark-mode.sh"
