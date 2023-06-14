@@ -100,6 +100,17 @@ null_ls.setup({
 	}
 })
 
+cmp.setup {
+  sources = {
+    {
+      name = 'beancount',
+      option = {
+        account = '/Users/andrew/notes/10 Personal/transactions.ledger'
+      }
+    }
+  }
+}
+
 lsp.setup()
 
 vim.diagnostic.config({
