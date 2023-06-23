@@ -2,6 +2,8 @@
 
 set -e
 
+cd $DOTFILES
+
 DARK_COUNT="$(ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*mocha"  | wc -l | xargs)"
 LIGHT_COUNT="$(ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*latte" | wc -l | xargs)"
 
