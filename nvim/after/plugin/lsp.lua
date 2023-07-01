@@ -1,14 +1,14 @@
 local lsp = require('lsp-zero')
 local null_ls = require("null-ls")
-local navic = require("nvim-navic")
 local lspconfig = require("lspconfig");
 
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
+	-- 'tsserver',
 	'eslint',
-	'rust_analyzer'
+	'rust_analyzer',
+	-- 'denols'
 })
 
 lsp.nvim_workspace()
@@ -82,10 +82,20 @@ local null_opts = lsp.build_options('null-ls', {
 -- })
 
 lspconfig.tsserver.setup {
+  single_file_support = false,
   root_dir = function(fname)
 	  return not lspconfig.util.root_pattern("deno.jsonc", "deno.json")(fname) and lspconfig.util.root_pattern("package.json")(fname)
   end
 }
+
+require("typescript").setup({
+	disable_commands = false,   -- prevent the plugin from creating Vim commands
+	debug = false,              -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true,          -- fall back to standard LSP definition on failure
+	},
+	single_file_support = false,
+})
 
 lspconfig.tailwindcss.setup({
 	root_dir = lspconfig.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts')
@@ -94,25 +104,10 @@ lspconfig.tailwindcss.setup({
 null_ls.setup({
 	on_attach = null_opts.on_attach,
 	sources = {
-		-- null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.diagnostics.eslint_d,
-		require("typescript.extensions.null-ls.code-actions"),
+		null_ls.builtins.formatting.prettierd,
+		-- null_ls.builtins.diagnostics.eslint_d,
+		-- require("typescript.extensions.null-ls.code-actions"),
 	}
 })
 
-cmp.setup {
-  sources = {
-    {
-      name = 'beancount',
-      option = {
-        account = '/Users/andrew/notes/10 Personal/transactions.ledger'
-      }
-    }
-  }
-}
-
 lsp.setup()
-
-vim.diagnostic.config({
-	virtual_text = true
-})
