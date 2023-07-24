@@ -6,6 +6,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.vim_markdown_folding_disabled = 1
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -37,6 +39,37 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  {
+    'epwalsh/obsidian.nvim',
+    event = { "BufReadPre /Users/andrew/notes/**.md" },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+      -- Optionals
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
+      "godlygeek/tabular",
+      "preservim/vim-markdown",
+    },
+    opts = {
+      dir = "/Users/andrew/notes",
+      daily_notes = {
+        folder = "10 Journal"
+      }
+    },
+    config = function(_, opts)
+      require("obsidian").setup(opts)
+      vim.keymap.set("n", "gf", function()
+        if require("obsidian").util.cursor_on_markdown_link() then
+          return "<cmd>ObsidianFollowLink<CR>"
+        else
+          return "gf"
+        end
+      end, { noremap = false, expr = true })
+    end,
+  },
+
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.

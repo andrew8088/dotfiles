@@ -22,7 +22,7 @@ alias h=heroku
 alias jj='pbpaste | jsonpp | pbcopy'
 alias rm=trash
 alias trim="awk '{\$1=\$1;print}'"
-
+alias notes="cd $NOTES_DIR && nvim 00\ HOME.md"
 
 # GIT ALIASES -----------------------------------------------------------------
 alias gc='git commit'
