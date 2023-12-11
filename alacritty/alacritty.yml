@@ -13,11 +13,11 @@ window:
 
 live_config_reload: true
 scrolling:
-    history: 10000
-    multiplier: 10
+  history: 10000
+  multiplier: 10
 selection:
-    semantic_escape_chars: '|:"'' {}()[]<>'
-    save_to_clipboard: true
+  semantic_escape_chars: '|:"'' {}()[]<>'
+  save_to_clipboard: true
 
 font:
   normal:
@@ -42,7 +42,7 @@ cursor:
   unfocused_hollow: true
 
 key_bindings:
-  - { key: N,      mods: Command,         action: SpawnNewInstance }
-  - { key: Q,      mods: Command,         action: Quit             }
-  - { key: W,      mods: Command,         action: Quit             }
-  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: Q, mods: Command, action: Quit }
+  - { key: W, mods: Command, action: Quit }
+  - { key: F, mods: Command|Control, action: ToggleFullscreen }
