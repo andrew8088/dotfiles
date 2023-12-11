@@ -37,6 +37,13 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'tpope/vim-eunuch',
 
+  'Glench/Vim-Jinja2-Syntax',
+  'nikvdp/ejs-syntax',
+
+  'phaazon/hop.nvim',
+  'nacro90/numb.nvim',
+  'ledger/vim-ledger',
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -69,8 +76,13 @@ require('lazy').setup({
       end, { noremap = false, expr = true })
     end,
   },
-
-
+  {
+    "nvim-orgmode/orgmode",
+    config = function()
+      require('orgmode').setup_ts_grammar()
+      require('orgmode').setup({})
+    end
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -268,6 +280,7 @@ cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev Q! q!
+cnoreabbrev Today ObsidianToday
 ]])
 
 -- [[ Highlight on yank ]]
@@ -551,6 +564,12 @@ cmp.setup {
 
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local format_is_enabled = true
+vim.api.nvim_create_user_command('ToggleAutoFormat', function()
+  format_is_enabled = not format_is_enabled
+  print('Setting autoformatting to: ' .. tostring(format_is_enabled))
+end, {})
+
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd
@@ -563,12 +582,19 @@ null_ls.setup({
         group = augroup,
         buffer = bufnr,
         callback = function()
+          if not format_is_enabled then
+            return
+          end
           vim.lsp.buf.format({ bufnr = bufnr })
         end,
       })
     end
   end,
 })
+
+vim.cmd([[
+au BufRead,BufNewFile *.njk set filetype=jinja.html
+]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
