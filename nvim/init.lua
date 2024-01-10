@@ -172,10 +172,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -218,7 +216,24 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
+
+  {
+    'github/copilot.vim',
+    config = function()
+    end,
+  },
 }, {})
+
+-- vim.g.copilot_filetypes = { ["*"] = false }
+vim.g.copilot_no_tab_map = true
+
+-- Request suggestions manually
+-- (NB MacOS users, turn off default ctrl+space keybinding!)
+-- Accept current suggestion
+vim.keymap.set('i', '<C-p>', 'copilot#Accept("")', {
+  expr = true,
+  replace_keycodes = false
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
