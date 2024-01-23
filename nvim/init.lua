@@ -44,6 +44,8 @@ require('lazy').setup({
   'nacro90/numb.nvim',
   'ledger/vim-ledger',
 
+  '/martinda/Jenkinsfile-vim-syntax',
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
