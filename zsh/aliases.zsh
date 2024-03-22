@@ -52,7 +52,7 @@ alias gra='git rebase --abort'
 alias gec='git status | grep "both modified:" | cut -d ":" -f 2 | trim | xargs nvim -'
 alias gcan='gc --amend --no-edit'
 
-alias gp="git push -u 2>&1 | tee >(cat) | grep \"pull/new\" | awk '{print \$2}' | xargs open"
+alias gp="script -q /dev/null git push -u 2>&1 | tee >(cat) | grep \"pull/new\" | awk '{print \$2}' | xargs open"
 alias gpf='git push --force-with-lease'
 
 alias gbdd='git-branch-utils -d'
