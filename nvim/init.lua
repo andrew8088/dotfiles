@@ -155,6 +155,8 @@ require('lazy').setup({
     end
   },
 
+  'posva/vim-vue',
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -467,6 +469,13 @@ end
 
 local util = require 'lspconfig.util'
 
+local mason_registry = require('mason-registry')
+-- After v2.0.7
+-- local ts_plugin_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/typescript-plugin'
+-- For now can use
+local ts_plugin_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+    '/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin'
+
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
@@ -487,7 +496,18 @@ local servers = {
           or util.root_pattern('package.json', 'jsconfig.json')(fname)
     end,
     single_file_support = false,
+    init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = ts_plugin_path,
+          -- If .vue file cannot be recognized in either js or ts file try to add `typescript` and `javascript` in languages table.
+          languages = { 'vue' },
+        },
+      },
+    },
   },
+  volar = {},
 
   lua_ls = {
     settings = {
