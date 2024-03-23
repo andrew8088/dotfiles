@@ -14,6 +14,22 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	spec = {
 		{ import = "plugins" },
-		{ import = 'kickstart.plugins.autoformat' }
-	}
+		{ import = 'kickstart.plugins.autoformat' },
+		{ import = "plugins.lspconfig" },
+	},
+	  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })

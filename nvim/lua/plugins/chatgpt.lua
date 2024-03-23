@@ -8,6 +8,7 @@ return {
     },
     -- event = "VeryLazy",
     config = function()
+      print("ChatGPT.nvim loaded")
       require("chatgpt").setup({
         actions_paths = { vim.fn.stdpath('config') .. "/chatgpt-actions.json" },
         openai_params = {

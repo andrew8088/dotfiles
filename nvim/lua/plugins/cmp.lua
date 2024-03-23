@@ -22,6 +22,7 @@ return {
     },
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
+			print("nvim-cmp configuration")
 			local has_words_before = function()
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -84,34 +85,43 @@ return {
 		end,
 	},
 
-	{
-		"hrsh7th/cmp-cmdline",
-		config = function()
-			local cmp = require("cmp")
-			---@diagnostic disable-next-line: missing-fields
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline({
-					["<C-j>"] = {
-						c = function(fallback)
-							if cmp.visible() then
-								cmp.select_next_item()
-							else
-								fallback()
-							end
-						end,
-					},
-				}),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{
-						name = "cmdline",
-						option = {
-							ignore_cmds = { "Man", "!" },
-						},
-					},
-				}),
-			})
-		end,
-	},
+	-- {
+	-- 	"hrsh7th/cmp-cmdline",
+	-- 	config = function()
+	-- 		local cmp = require("cmp")
+	-- 		---@diagnostic disable-next-line: missing-fields
+	-- 		cmp.setup.cmdline(":", {
+	-- 			mapping = cmp.mapping.preset.cmdline({
+	-- 				["<C-j>"] = {
+	-- 					c = function(fallback)
+	-- 						if cmp.visible() then
+	-- 							cmp.select_next_item()
+	-- 						else
+	-- 							fallback()
+	-- 						end
+	-- 					end,
+	-- 				},
+	-- 				["<C-j>"] = {
+	-- 					c = function(fallback)
+	-- 						if cmp.visible() then
+	-- 							cmp.select_next_item()
+	-- 						else
+	-- 							fallback()
+	-- 						end
+	-- 					end,
+	-- 				},
+	-- 			}),
+	-- 			sources = cmp.config.sources({
+	-- 				{ name = "path" },
+	-- 			}, {
+	-- 				{
+	-- 					name = "cmdline",
+	-- 					option = {
+	-- 						ignore_cmds = { "Man", "!" },
+	-- 					},
+	-- 				},
+	-- 			}),
+	-- 		})
+	-- 	end,
+	-- },
 }
