@@ -22,7 +22,6 @@ return {
 			},
 		},
 		config = function(_, opts)
-			    print("Setting up telescope")
 			local telescope = require("telescope")
 			telescope.setup(opts)
 			telescope.load_extension("fzf")

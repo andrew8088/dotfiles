@@ -2,7 +2,6 @@ return {
 
   "williamboman/mason.nvim",
   config = function(_, opts)
-    print("Setting up Mason")
     require("mason").setup(opts)
 
     -- handle opts.ensure_installed
