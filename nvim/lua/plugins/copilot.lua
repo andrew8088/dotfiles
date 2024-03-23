@@ -55,7 +55,7 @@ return {
           auto_trigger = true,
           accept = false, -- disable built-in keymapping
            keymap = {
-            accept = "<C-c>a",
+            accept = "<C-c>v",
             accept_word = false,
             accept_line = false,
             next = "<C-c>n",
