@@ -1,37 +1,9 @@
-# brew tap federico-terzi/espanso
-# brew install espanso
-# brew install koekeishiya/formulae/yabai
-brew install obsidian
-brew install fzf
-brew install zsh-syntax-highlighting
-brew install firefox
-brew install skhd
-brew install istat-menus
-brew install docker
-brew install docker-compose
-# brew install cask slack
-brew install alfred
-brew install trash
-brew install the_silver_searcher
-brew install tree
-brew install yt-dlp
-brew install jsonpp
-brew install jq
+# Get an initial package list with 'brew bundle dump' before and save the created Brewfile in '$DOTFILES/install/Brewfile'
 
-# brew tap jakehilborn/jakehilborn
-# brew install displayplacer
-brew install exa
-brew install z
+#!/bin/sh
 
-# spark, fantastical, cardhop, shush, kaleidoscope
+echo "Installing brew..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install ksdiff
-brew install whatsapp
-# brew install alt-tab
-brew install neovim
-# brew install alacritty
-
-brew install fnm
-brew install tmux
-brew install rust
-brew install --cask rectangle
+echo "Installing packages..."
+brew bundle --file $DOTFILES/install/Brewfile
