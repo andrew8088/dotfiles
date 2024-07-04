@@ -44,8 +44,6 @@ require('lazy').setup({
   'nacro90/numb.nvim',
   'ledger/vim-ledger',
 
-  '/martinda/Jenkinsfile-vim-syntax',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -81,7 +79,6 @@ require('lazy').setup({
   {
     "nvim-orgmode/orgmode",
     config = function()
-      require('orgmode').setup_ts_grammar()
       require('orgmode').setup({})
     end
   },
@@ -487,7 +484,7 @@ local servers = {
     root_dir = function(fname)
       return util.root_pattern('deno.json', 'deno.jsonc')(fname)
     end,
-    single_file_support = false,
+    -- single_file_support = false,
   },
   eslint = {},
   tsserver = {
@@ -495,7 +492,7 @@ local servers = {
       return util.root_pattern('tsconfig.json')(fname)
           or util.root_pattern('package.json', 'jsconfig.json')(fname)
     end,
-    single_file_support = false,
+    -- single_file_support = false,
     init_options = {
       plugins = {
         {
@@ -543,11 +540,13 @@ mason_lspconfig.setup_handlers {
 
     local server_config = servers[server_name]
 
-    for k, v in pairs(server_config) do
-      config[k] = v
-    end
+    if server_config then
+      for k, v in pairs(server_config) do
+        config[k] = v
+      end
 
-    require('lspconfig')[server_name].setup(config);
+      require('lspconfig')[server_name].setup(config);
+    end
   end,
 }
 
