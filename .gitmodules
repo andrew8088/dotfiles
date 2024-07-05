@@ -10,3 +10,6 @@
 [submodule "vim/pack/minpac/opt/minpac"]
 	path = vim/pack/minpac/opt/minpac
 	url = https://github.com/k-takata/minpac.git
+[submodule "nvim/pack/github/start/copilot.vim"]
+	path = nvim/pack/github/start/copilot.vim
+	url = git@github.com:github/copilot.vim.git

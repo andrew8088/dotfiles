@@ -34,7 +34,6 @@ return {
         opts = {},
       },
       'mfussenegger/nvim-lint',
-      'mhartington/formatter.nvim',
     },
     config = function()
       local servers = {
