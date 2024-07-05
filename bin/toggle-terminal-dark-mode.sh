@@ -7,13 +7,13 @@ cd $DOTFILES
 DARK_COUNT="$(ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*mocha"  | wc -l | xargs)"
 LIGHT_COUNT="$(ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*latte" | wc -l | xargs)"
 
-if [ $DARK_COUNT -eq 3 ]; then
+if [ $DARK_COUNT -eq 4 ]; then
   # go light
   ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*mocha" | while read file; do
     gsed -i 's/mocha/latte/' "$file"
   done
   tmux source-file ~/.tmux.conf
-elif [ $LIGHT_COUNT -eq 3 ]; then
+elif [ $LIGHT_COUNT -eq 4 ]; then
   # go dark
   ag --files-with-matches --ignore-dir=./bin --nobreak "catppuccin.*latte" | while read file; do
     gsed -i 's/latte/mocha/' "$file"
