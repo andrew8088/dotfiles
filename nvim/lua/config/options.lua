@@ -7,6 +7,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- vim.g.vim_markdown_folding_disabled = 1
+vim.o.foldmethod = 'marker'
+vim.o.foldlevel = 0
 
 -- Set highlight on search
 vim.o.hlsearch = false
