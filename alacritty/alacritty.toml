@@ -1,0 +1,67 @@
+import = ["/Users/andrew/code/dotfiles/alacritty/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 20.0
+
+[font.bold]
+family = "MonoLisaVariable Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "MonoLisaVariable Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "MonoLisaScript Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "MonoLisaVariable Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Command|Control"
+
+[scrolling]
+history = 10000
+multiplier = 10
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = "|:\"' {}()[]<>"
+
+[window]
+decorations = "none"
+opacity = 1.0
+
+[window.padding]
+x = 5
+y = 5
