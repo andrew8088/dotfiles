@@ -44,7 +44,7 @@ return {
           single_file_support = false,
         },
         eslint = {},
-        tsserver = {},
+        ts_ls = {},
         volar = {},
       }
 
@@ -141,4 +141,3 @@ return {
 --     },
 --   },
 -- },
-
