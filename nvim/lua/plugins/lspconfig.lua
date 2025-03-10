@@ -43,9 +43,14 @@ return {
           end,
           single_file_support = false,
         },
-        eslint = {},
+        eslint = {
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern('biome.json')(fname) == false
+          end,
+        },
         ts_ls = {},
         volar = {},
+        biome = {},
       }
 
       -- TODO: extend config with inspiration from

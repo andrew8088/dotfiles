@@ -14,6 +14,7 @@ cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev Q! q!
 cnoreabbrev Today ObsidianToday
+nnoremap <leader>m :!yarn run mocha %<CR>
 ]])
 
 -- Diagnostic keymaps
