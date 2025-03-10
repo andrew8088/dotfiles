@@ -51,7 +51,7 @@ key = "F"
 mods = "Command|Control"
 
 [scrolling]
-history = 10000
+history = 50000
 multiplier = 10
 
 [selection]
