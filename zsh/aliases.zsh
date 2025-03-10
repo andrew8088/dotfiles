@@ -35,11 +35,12 @@ alias gcp='git cherry-pick'
 alias gd='git diff -w'
 alias gds='git diff -w --staged'
 alias grs='git restore --staged'
-alias gst='git rev-parse --git-dir > /dev/null 2>&1 && git status || exa'
+alias gst='git rev-parse --git-dir > /dev/null 2>&1 && git status || eza'
 alias gu='git reset --soft HEAD~1'
 alias gpr='git remote prune origin'
 alias ff='gpr && git pull --ff-only'
 alias grd='git fetch origin && git rebase origin/master'
+alias grd='git fetch origin && (git show-ref --verify --quiet refs/remotes/origin/master && git rebase origin/master || git rebase origin/main)'
 alias gbb='git-switchbranch'
 alias gbf='git branch | head -1 | xargs' # top branch
 alias gl=pretty_git_log
@@ -63,6 +64,12 @@ alias gup='git branch --set-upstream-to=origin/$(git-current-branch) $(git-curre
 
 alias gnext='git log --ancestry-path --format=%H ${commit}..master | tail -1 | xargs git checkout'
 alias gprev='git checkout HEAD^'
+
+function gwa() {
+    git worktree add "../$1" -b "$1"
+    cd "../$1"
+    git branch --set-upstream-to="origin/$1" "$1"
+}
 
 # FUNCTIONS -------------------------------------------------------------------
 # function gg {
