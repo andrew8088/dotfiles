@@ -53,3 +53,5 @@ bindkey '^?' backward-delete-char
 # END VIM MODE ----------------------------------------------------------------
 
 #eval "$(lua ~/bin/z.lua --init zsh)"
+
+source ~/.api_tz_dont_delete

@@ -1,6 +1,6 @@
 after-login-command = []
 after-startup-command = []
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -111,7 +111,7 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
 if.app-id = "us.zoom.xos"
-run = "move-node-to-workspace 2-zoom"
+run = "layout floating"
 
 [[on-window-detected]]
 if.app-id = "com.spotify.client"

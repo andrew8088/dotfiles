@@ -1,0 +1,32 @@
+[user]
+	email = andrew@burgess.io
+	name = Andrew Burgess
+
+[url "git@github.com:classdojo/"]
+    insteadOf = "cd:"
+
+[includeIf "gitdir:~/code/dojo/"]
+    path = ~/.dojo.gitconfig
+
+[include]
+    path = /Users/andrew/code/lib/delta/catppuccin.gitconfig
+
+[core]
+    pager = delta
+
+[delta]
+    ; side-by-side = true
+    ; syntax-theme = Monokai
+    features = catppuccin-latte
+    line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[push]
+	autoSetupRemote = true

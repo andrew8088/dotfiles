@@ -64,6 +64,7 @@ alias gup='git branch --set-upstream-to=origin/$(git-current-branch) $(git-curre
 
 alias gnext='git log --ancestry-path --format=%H ${commit}..master | tail -1 | xargs git checkout'
 alias gprev='git checkout HEAD^'
+alias gsee="pretty_git_log | head -20 | fzf --ansi --preview=\" echo '{}' | awk '{print \$2}' | bat --color=always\" | awk '{print \$2}' | xargs git show"
 
 function gwa() {
     git worktree add "../$1" -b "$1"
@@ -159,3 +160,4 @@ alias lg='ledger -f "$(find $NOTES_DIR -name 2024.ledger)"'
 alias yip='yarn install --pure-lockfile'
 
 alias dark="$DOTFILES/bin/toggle-terminal-dark-mode.sh"
+alias vf='nvim $(fd --type f --hidden --exclude .git | fzf -m --prompt="Open file(s) > ")'

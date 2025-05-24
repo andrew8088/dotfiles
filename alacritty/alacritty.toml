@@ -1,4 +1,4 @@
-import = ["/Users/andrew/code/dotfiles/alacritty/catppuccin-mocha.toml"]
+import = ["/Users/andrew/code/dotfiles/alacritty/catppuccin-latte.toml"]
 live_config_reload = true
 
 [colors]

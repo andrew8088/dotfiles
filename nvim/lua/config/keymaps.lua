@@ -1,4 +1,5 @@
 -- print("keymaps: start")
+vim.keymap.set('n', ';', ':', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
