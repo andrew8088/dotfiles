@@ -17,7 +17,7 @@
 [delta]
     ; side-by-side = true
     ; syntax-theme = Monokai
-    features = catppuccin-latte
+    features = catppuccin-mocha
     line-numbers = true
 
 [interactive]
