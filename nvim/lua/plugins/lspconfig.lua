@@ -37,15 +37,14 @@ return {
     },
     config = function()
       local servers = {
-        denols = {
-          root_dir = function(fname)
-            return require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc')(fname)
-          end,
-          single_file_support = false,
-        },
+        -- denols = {
+        --   root_dir = function(fname)
+        --     return require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc')(fname)
+        --   end,
+        --   single_file_support = false,
+        -- },
         eslint = {},
         ts_ls = {},
-        volar = {},
       }
 
       -- TODO: extend config with inspiration from
@@ -85,29 +84,61 @@ return {
         require("lspconfig")[server].setup(server_opts)
       end
 
-      -- get all the servers that are available through mason-lspconfig
+      -- Handle Mason-LSPConfig setup - compatible with both v1.x and v2.x
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
-      local all_mslp_servers = {}
-      if have_mason then
-        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-      end
 
       local ensure_installed = {} ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then
           server_opts = server_opts == true and {} or server_opts
-          -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
+          -- run manual setup if mason=false
+          if server_opts.mason == false then
             setup(server)
           else
-            ensure_installed[#ensure_installed + 1] = server
+            -- Use mason_name if specified, otherwise use server name
+            local mason_server_name = server_opts.mason_name or server
+            ensure_installed[#ensure_installed + 1] = mason_server_name
           end
         end
       end
 
       if have_mason then
-        -- automatically hook up LSPs which are Mason-installed but not explicitly set up with `opts.servers`
-        mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
+        -- Try v2.0 setup first, fallback to v1.x setup
+        local mason_config = { ensure_installed = ensure_installed }
+        
+        -- Check if we have vim.lsp.enable (Neovim 0.11+) for v2.0 features
+        if vim.lsp.enable then
+          mason_config.automatic_enable = true
+        end
+        
+        local ok, err = pcall(mlsp.setup, mason_config)
+        
+        if not ok then
+          -- Fallback to v1.x style setup with handlers
+          mlsp.setup({
+            ensure_installed = ensure_installed,
+            handlers = {
+              function(server_name)
+                -- Map mason server name back to lspconfig server name if needed
+                local lspconfig_name = server_name
+                for lsp_server, opts in pairs(servers) do
+                  if opts.mason_name == server_name then
+                    lspconfig_name = lsp_server
+                    break
+                  end
+                end
+                setup(lspconfig_name)
+              end,
+            }
+          })
+        else
+          -- v2.0 setup succeeded, manually set up servers
+          for server, server_opts in pairs(servers) do
+            if server_opts and server_opts.mason ~= false then
+              setup(server)
+            end
+          end
+        end
       end
 
       -- vim.api.nvim_create_autocmd("LspAttach", {
