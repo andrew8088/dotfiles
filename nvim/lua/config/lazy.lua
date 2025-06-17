@@ -14,8 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	spec = {
 		{ import = "plugins" },
-		{ import = 'kickstart.plugins.autoformat' },
-		{ import = "plugins.lspconfig" },
 	},
 	change_detection = {
 		enabled = false,

@@ -33,7 +33,6 @@ return {
         enabled = true, -- TODO: figure out how this status shows without fidget
         opts = {},
       },
-      'mfussenegger/nvim-lint',
     },
     config = function()
       local servers = {
@@ -43,8 +42,21 @@ return {
         --   end,
         --   single_file_support = false,
         -- },
-        eslint = {},
+        eslint = {
+          settings = {
+            format = { enable = true },
+          },
+        },
         ts_ls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              format = {
+                enable = true,
+              },
+            },
+          },
+        },
       }
 
       -- TODO: extend config with inspiration from
@@ -79,66 +91,35 @@ return {
             nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
             nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
             nmap('L', vim.lsp.buf.signature_help, 'Signature Documentation')
+            
+            -- Format on save
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
           end,
         }, servers[server] or {})
         require("lspconfig")[server].setup(server_opts)
       end
 
-      -- Handle Mason-LSPConfig setup - compatible with both v1.x and v2.x
+      -- Handle Mason-LSPConfig setup using v2.x API
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
 
-      local ensure_installed = {} ---@type string[]
-      for server, server_opts in pairs(servers) do
-        if server_opts then
-          server_opts = server_opts == true and {} or server_opts
-          -- run manual setup if mason=false
-          if server_opts.mason == false then
-            setup(server)
-          else
-            -- Use mason_name if specified, otherwise use server name
-            local mason_server_name = server_opts.mason_name or server
-            ensure_installed[#ensure_installed + 1] = mason_server_name
-          end
-        end
-      end
-
       if have_mason then
-        -- Try v2.0 setup first, fallback to v1.x setup
-        local mason_config = { ensure_installed = ensure_installed }
-        
-        -- Check if we have vim.lsp.enable (Neovim 0.11+) for v2.0 features
-        if vim.lsp.enable then
-          mason_config.automatic_enable = true
-        end
-        
-        local ok, err = pcall(mlsp.setup, mason_config)
-        
-        if not ok then
-          -- Fallback to v1.x style setup with handlers
-          mlsp.setup({
-            ensure_installed = ensure_installed,
-            handlers = {
-              function(server_name)
-                -- Map mason server name back to lspconfig server name if needed
-                local lspconfig_name = server_name
-                for lsp_server, opts in pairs(servers) do
-                  if opts.mason_name == server_name then
-                    lspconfig_name = lsp_server
-                    break
-                  end
-                end
-                setup(lspconfig_name)
-              end,
-            }
-          })
-        else
-          -- v2.0 setup succeeded, manually set up servers
-          for server, server_opts in pairs(servers) do
-            if server_opts and server_opts.mason ~= false then
-              setup(server)
-            end
-          end
-        end
+        -- Ensure servers are installed and use handlers for setup
+        mlsp.setup({
+          ensure_installed = vim.tbl_keys(servers),
+          handlers = {
+            -- Default handler: called for each server in ensure_installed
+            function(server_name)
+              if servers[server_name] then
+                setup(server_name)
+              end
+            end,
+          },
+        })
       end
 
       -- vim.api.nvim_create_autocmd("LspAttach", {

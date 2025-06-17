@@ -6,14 +6,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-  command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('js', {}),
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-  command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
-})
+-- ESLint formatting now handled by LSP in lspconfig.lua
