@@ -79,14 +79,15 @@ return {
           vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
         end
 
-        nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-        nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+        -- Use explicit space instead of <leader>
+        nmap(' rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        nmap(' ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+        nmap(' D', vim.lsp.buf.type_definition, 'Type [D]efinition')
         nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
         nmap('L', vim.lsp.buf.signature_help, 'Signature Documentation')
         
@@ -107,22 +108,9 @@ return {
         require("lspconfig")[server].setup(server_opts)
       end
 
-      -- Handle Mason-LSPConfig setup using v2.x API
-      local have_mason, mlsp = pcall(require, "mason-lspconfig")
-
-      if have_mason then
-        -- Ensure servers are installed and use handlers for setup
-        mlsp.setup({
-          ensure_installed = vim.tbl_keys(servers),
-          handlers = {
-            -- Default handler: called for each server in ensure_installed
-            function(server_name)
-              if servers[server_name] then
-                setup(server_name)
-              end
-            end,
-          },
-        })
+      -- Setup servers manually without mason-lspconfig auto-setup
+      for server_name, _ in pairs(servers) do
+        setup(server_name)
       end
 
       -- vim.api.nvim_create_autocmd("LspAttach", {

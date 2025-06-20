@@ -1,6 +1,7 @@
 -- print("keymaps: start")
 vim.keymap.set('n', ';', ':', { noremap = true })
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Remove this line - it blocks leader key mappings
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
