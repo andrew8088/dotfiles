@@ -113,31 +113,12 @@ if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
 fi
 
-dclear () {
-    docker ps -a -q | xargs docker kill -f
-    docker ps -a -q | xargs docker rm -f
-    docker images | grep "api\|none" | awk '{print $3}' | xargs docker rmi -f
-    docker volume prune -f
-}
-
-alias docker-clear=dclear
-
-dreset () {
-    dclear
-    docker images -q | xargs docker rmi -f
-    docker volume rm $(docker volume ls |awk '{print $2}')
-    rm -rf ~/Library/Containers/com.docker.docker/Data/*
-    docker system prune -a
-}
-
-
 extract-audio-and-video () {
     ffmpeg -i "$1" -c:a copy obs-audio.aac
     ffmpeg -i "$1" -c:v copy obs-video.mp4
 }
 
 alias epdir='cd `epdir.sh`'
-
 
 hs () {
  curl https://httpstat.us/$1
