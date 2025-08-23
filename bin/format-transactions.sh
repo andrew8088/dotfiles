@@ -16,16 +16,17 @@ cap () {
   }'
 }
 
-paste -d '|' - - - | tac |
+paste -d '|' - - - | cat |
 while read line; do
-  d=$(echo $line | cut -d '|' -f 1 | xargs -n 3 echo)
-  d=$(date -jf "%b %e, %Y" "+%Y-%m-%d" "$d")
-
-  store=$(echo $line | cut -d '|' -f 2)
-  store=$(echo $store | cut -d '#' -f 1 | cut -d ',' -f 1 | cap)
-  cost=$(echo $line | cut -d '|' -f 3)
-
-  echo "$d * $store"
-  echo "  e:   $cost"
-  echo "  c:rbc:Visa"
+  echo "$line"
+  # d=$(echo $line | cut -d '|' -f 1 | xargs -n 3 echo)
+  # # d=$(date -jf "%b %e, %Y" "+%Y-%m-%d" "$d")
+  #
+  # store=$(echo $line | cut -d '|' -f 2)
+  # store=$(echo $store | cut -d '#' -f 1 | cut -d ',' -f 1 | cap)
+  # cost=$(echo $line | cut -d '|' -f 3)
+  #
+  # echo "$d"
+  # echo "$store"
+  # echo "$cost"
 done
