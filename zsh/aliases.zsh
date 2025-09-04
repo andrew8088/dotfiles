@@ -142,3 +142,6 @@ alias yip='yarn install --pure-lockfile'
 
 alias dark="$DOTFILES/bin/toggle-terminal-dark-mode.sh"
 alias vf='nvim $(fd --type f --hidden --exclude .git | fzf -m --prompt="Open file(s) > ")'
+
+alias pi="pbpaste | cut -d ':' -f 1 | sed -E 's/[[:space:]]+[0-9]+[[:space:]]+//' | xargs nvim"
+alias mi="pbpaste | cut -d ':' -f 2 | sed -E 's/[[:space:]]+[0-9]+[[:space:]]+//'"
