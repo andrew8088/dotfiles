@@ -58,11 +58,11 @@ return {
             clangdFileStatus = true,
           },
         },
-        eslint = {
-          settings = {
-            format = { enable = true },
-          },
-        },
+        -- eslint = {
+        --   settings = {
+        --     format = { enable = true },
+        --   },
+        -- },
         ts_ls = {},
         lua_ls = {
           settings = {
