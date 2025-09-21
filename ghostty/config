@@ -1,20 +1,24 @@
 font-family = "MonoLisa Script Regular Nerd Font Complete"
 font-family-italic = "MonoLisa Script Italic Nerd Font Complete"
 
-theme = tokyonight_night
+theme = dark:tokyonight night,light:tokyonight day
 shell-integration = zsh
 mouse-hide-while-typing = true
 unfocused-split-opacity=0.9
 
-
 keybind = ctrl+a>c=new_tab
-keybind = ctrl+a>|=new_split:right
+keybind = ctrl+a>\=new_split:right
 keybind = ctrl+a>-=new_split:down
 keybind = ctrl+a>l=goto_split:right
 keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>1=goto_tab:1
+keybind = ctrl+a>2=goto_tab:2
+keybind = ctrl+a>3=goto_tab:3
+keybind = ctrl+a>4=goto_tab:4
 
 link-url = true
 
 maximize = true
 macos-window-buttons = hidden
 macos-titlebar-style = tabs
+copy-on-select = clipboard
