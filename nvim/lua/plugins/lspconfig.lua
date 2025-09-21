@@ -63,7 +63,49 @@ return {
         --     format = { enable = true },
         --   },
         -- },
-        ts_ls = {},
+        ts_ls = {
+          cmd = { "pnpm", "exec", "typescript-language-server", "--stdio" },
+          init_options = {
+            preferences = {
+              disableSuggestions = false,
+              quotePreference = "auto",
+              includeCompletionsForModuleExports = true,
+              includeCompletionsForImportStatements = true,
+              includeCompletionsWithSnippetText = true,
+              includeAutomaticOptionalChainCompletions = true,
+            },
+          },
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+              suggest = {
+                includeCompletionsForModuleExports = true,
+              },
+              preferences = {
+                includePackageJsonAutoImports = "auto",
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {

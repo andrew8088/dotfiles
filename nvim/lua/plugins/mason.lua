@@ -4,6 +4,7 @@ return {
   opts = {
     ensure_installed = {
       "clangd",
+      "typescript-language-server",
     },
   },
   config = function(_, opts)
