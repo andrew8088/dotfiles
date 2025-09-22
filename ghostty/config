@@ -1,5 +1,8 @@
-font-family = "MonoLisa Script Regular Nerd Font Complete"
-font-family-italic = "MonoLisa Script Italic Nerd Font Complete"
+font-family = MonoLisa Variable Regular Regular
+font-family-bold = MonoLisa Variable Regular MonoLisaVariableRegular-Bold
+font-family-italic = MonoLisa Variable Italic Italic
+font-family-bold-italic = MonoLisa Variable Italic Bold Italic
+font-size = 18
 
 theme = dark:tokyonight night,light:tokyonight day
 shell-integration = zsh
