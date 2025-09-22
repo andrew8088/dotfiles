@@ -5,7 +5,10 @@ font-family-bold-italic = MonoLisa Variable Italic Bold Italic
 font-size = 18
 
 theme = dark:tokyonight night,light:tokyonight day
+
+cursor-style = block
 shell-integration = zsh
+shell-integration-features = no-cursor
 mouse-hide-while-typing = true
 unfocused-split-opacity=0.9
 
