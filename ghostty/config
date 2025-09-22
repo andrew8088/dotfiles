@@ -1,7 +1,7 @@
-font-family = MonoLisa Variable Regular Regular
-font-family-bold = MonoLisa Variable Regular MonoLisaVariableRegular-Bold
-font-family-italic = MonoLisa Variable Italic Italic
-font-family-bold-italic = MonoLisa Variable Italic Bold Italic
+font-family = MonoLisaVariable Nerd Font Regular
+font-family-bold = MonoLisaVariable Nerd Font Bold
+font-family-italic = MonoLisaScript Nerd Font Italic
+font-family-bold-italic = MonoLisaVariable Nerd Font Bold Italic
 font-size = 18
 
 theme = dark:tokyonight night,light:tokyonight day
