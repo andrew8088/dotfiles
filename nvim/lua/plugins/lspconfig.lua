@@ -36,33 +36,6 @@ return {
     },
     config = function()
       local servers = {
-        -- denols = {
-        --   root_dir = function(fname)
-        --     return require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc')(fname)
-        --   end,
-        --   single_file_support = false,
-        -- },
-        clangd = {
-          cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--header-insertion=iwyu",
-            "--completion-style=detailed",
-            "--function-arg-placeholders",
-            "--fallback-style=llvm",
-          },
-          init_options = {
-            usePlaceholders = true,
-            completeUnimported = true,
-            clangdFileStatus = true,
-          },
-        },
-        -- eslint = {
-        --   settings = {
-        --     format = { enable = true },
-        --   },
-        -- },
         ts_ls = {
           cmd = { "pnpm", "exec", "typescript-language-server", "--stdio" },
           init_options = {
@@ -158,47 +131,15 @@ return {
         })
       end
 
-      local function setup(server)
+      for name, opts in pairs(servers) do
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
           on_attach = on_attach_callback,
-        }, servers[server] or {})
-        require("lspconfig")[server].setup(server_opts)
-      end
+        }, opts or {})
 
-      -- Setup servers manually without mason-lspconfig auto-setup
-      for server_name, _ in pairs(servers) do
-        setup(server_name)
+        vim.lsp.config(name, server_opts)
+        vim.lsp.enable(name)
       end
-
-      -- vim.api.nvim_create_autocmd("LspAttach", {
-      --   group = vim.api.nvim_create_augroup("lsp-attach-keymaps", { clear = true }),
-      --   callback = function(event)
-      --     require("config.keymaps").setup_lsp_keymaps(event)
-      --   end,
-      -- })
     end,
   },
 }
--- yanked directly from https://github.com/fredrikaverpil/dotfiles/blob/89b3cdb2f27876e2bae6cb0d2b8be595b6ab2a77/nvim-fredrik/lua/plugins/lsp.lua
-
--- Example LSP settings below:
--- lua_ls = {
---   cmd = { ... },
---   filetypes = { ... },
---   capabilities = { ... },
---   on_attach = { ... },
---   settings = {
---     Lua = {
---       workspace = {
---         checkThirdParty = false,
---       },
---       codeLens = {
---         enable = true,
---       },
---       completion = {
---         callSnippet = "Replace",
---       },
---     },
---   },
--- },
