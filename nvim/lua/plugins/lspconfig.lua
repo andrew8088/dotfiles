@@ -121,7 +121,7 @@ return {
         nmap(' D', vim.lsp.buf.type_definition, 'Type [D]efinition')
         nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
         nmap('L', vim.lsp.buf.signature_help, 'Signature Documentation')
-        
+
         -- Format on save
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
