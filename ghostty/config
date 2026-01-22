@@ -17,6 +17,8 @@ keybind = ctrl+a>\=new_split:right
 keybind = ctrl+a>-=new_split:down
 keybind = ctrl+a>l=goto_split:right
 keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:down
+keybind = ctrl+a>k=goto_split:up
 keybind = ctrl+a>1=goto_tab:1
 keybind = ctrl+a>2=goto_tab:2
 keybind = ctrl+a>3=goto_tab:3

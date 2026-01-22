@@ -15,9 +15,6 @@
     pager = delta
 
 [delta]
-    ; side-by-side = true
-    ; syntax-theme = Monokai
-    features = catppuccin-mocha
     line-numbers = true
 
 [interactive]

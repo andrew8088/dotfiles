@@ -42,6 +42,10 @@ show_git_head() {
 }
 
 pretty_git_log() {
+    git log --since="1 months ago" --graph --pretty="tformat:${LOG_FORMAT}" $* | pretty_git_format | git_page_maybe
+}
+
+pretty_git_log_long() {
     git log --since="12 months ago" --graph --pretty="tformat:${LOG_FORMAT}" $* | pretty_git_format | git_page_maybe
 }
 

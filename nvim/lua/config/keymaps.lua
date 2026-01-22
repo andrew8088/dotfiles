@@ -10,6 +10,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<C-l>', ":bnext<CR>", { silent = true })
 vim.keymap.set('n', '<C-h>', ":bprevious<CR>", { silent = true })
 
+vim.keymap.set('n', '<C-t>', ":!pnpm exec mocha %<CR>")
+
+vim.keymap.set("n", "/", "/\\v", { noremap = true })
+vim.keymap.set("n", "?", "?\\v", { noremap = true })
+
 vim.cmd([[
 cnoreabbrev W w
 cnoreabbrev Wq wq

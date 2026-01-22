@@ -16,7 +16,7 @@ alias ta='tmux attach -t'
 alias l='eza -lah'
 alias ls=eza
 alias sl=eza
-alias c='clear'
+alias c='tput clear'
 alias s='source ~/.zshrc'
 alias h=heroku
 alias jj='pbpaste | jsonpp | pbcopy'
@@ -44,6 +44,7 @@ alias grd='git fetch origin && (git show-ref --verify --quiet refs/remotes/origi
 alias gbb='git-switchbranch'
 alias gbf='git branch | head -1 | xargs' # top branch
 alias gl=pretty_git_log
+alias gll=pretty_git_log_long
 alias gla=pretty_git_log_all
 #alias gl="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(green)%an %ar %C(reset) %C(bold magenta)%d%C(reset)'"
 #alias gla="git log --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'"

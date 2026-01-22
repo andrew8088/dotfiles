@@ -20,16 +20,11 @@ fi
 autoload -U zmv
 autoload -U promptinit && promptinit
 autoload -U colors && colors
-autoload -Uz compinit && compinit
 
 if test -z ${ZSH_HIGHLIGHT_DIR+x}; then
 else
     source $ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh
 fi
-
-precmd() {
-    source $DOTFILES/zsh/aliases.zsh
-}
 
 export VISUAL=nvim
 export EDITOR=nvim
