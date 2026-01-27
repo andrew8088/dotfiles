@@ -5,7 +5,8 @@
 set -euo pipefail  # Exit on error, undefined vars, pipe failures
 
 # Configuration
-DB_HOST="192.168.0.15"
+DB_HOST="127.0.0.1"
+DB_PORT="5433"
 DB_NAME="maybe_production"
 DB_USER="maybe_user"
 BACKUP_DIR="$HOME/backups/maybe"
@@ -60,7 +61,7 @@ log_info "Backup will be saved to: $BACKUP_FILE"
 # Perform the backup
 if pg_dump \
     --host="$DB_HOST" \
-    --port=5432 \
+    --port="$DB_PORT" \
     --username="$DB_USER" \
     --dbname="$DB_NAME" \
     --verbose \
