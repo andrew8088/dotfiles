@@ -49,4 +49,7 @@ bindkey '^?' backward-delete-char
 
 #eval "$(lua ~/bin/z.lua --init zsh)"
 
-source ~/.api_tz_dont_delete
+if test -d "$HOME/code/friday"; then
+    export FRIDAY_HOME="$HOME/code/friday"
+    export PATH="$FRIDAY_HOME/bin:$PATH"
+fi
