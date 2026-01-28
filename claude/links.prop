@@ -1,0 +1,2 @@
+$DOTFILES/claude/commands=$HOME/.claude/commands
+$DOTFILES/claude/settings.local.json=$HOME/.claude/settings.local.json
