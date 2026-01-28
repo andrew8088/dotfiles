@@ -53,3 +53,12 @@ if test -d "$HOME/code/friday"; then
     export FRIDAY_HOME="$HOME/code/friday"
     export PATH="$FRIDAY_HOME/bin:$PATH"
 fi
+
+source ~/.api_tz_dont_delete
+
+# bun completions
+[ -s "/Users/andrew/.bun/_bun" ] && source "/Users/andrew/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
