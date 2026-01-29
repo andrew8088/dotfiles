@@ -35,7 +35,7 @@ render() {
 while true; do
     {
         branch=$(git branch --show-current 2>/dev/null || echo "detached")
-        echo -e "\033[1m=== Git Watch: $branch ($(date '+%H:%M:%S')) ===\033[0m"
+        echo -e "\033[1m$branch ($(date '+%H:%M:%S'))\033[0m"
         echo ""
 
         status=$(git status --porcelain 2>/dev/null || true)
@@ -75,6 +75,8 @@ while true; do
             [[ -n "$untracked" ]] && echo -e "\033[1mUntracked:\033[0m\n$untracked"
         fi
 
+        echo ""
+        echo ""
         echo -e "\033[1mRecent commits:\033[0m"
         git log --format="%h|%ar|%s" -5 2>/dev/null | while IFS='|' read -r hash ago msg; do
             echo -e "  \033[33m$hash\033[0m $msg \033[2m($ago)\033[0m"
@@ -82,10 +84,10 @@ while true; do
 
         if [[ "$branch" != "main" && "$branch" != "master" && "$branch" != "detached" ]]; then
             base=""
-            if git rev-parse --verify main >/dev/null 2>&1; then
-                base="main"
-            elif git rev-parse --verify master >/dev/null 2>&1; then
-                base="master"
+            if git rev-parse --verify origin/main >/dev/null 2>&1; then
+                base="origin/main"
+            elif git rev-parse --verify origin/master >/dev/null 2>&1; then
+                base="origin/master"
             fi
 
             if [[ -n "$base" ]]; then
