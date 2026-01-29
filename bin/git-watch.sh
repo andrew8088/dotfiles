@@ -1,4 +1,35 @@
 #!/bin/bash
+#
+# Example output:
+#
+#   feature/add-auth (14:32:07)
+#
+#   Staged:
+#     A  src/auth.ts (staged)
+#
+#   Unstaged:
+#     M  src/index.ts
+#
+#   Untracked:
+#     ?? notes.txt
+#
+#
+#   Recent commits:
+#     a1b2c3d Add login endpoint (2 hours ago)
+#     e4f5g6h Fix typo in README (3 hours ago)
+#     i7j8k9l Initial commit (2 days ago)
+#
+#   Branch changes vs origin/main (3 files):
+#     A  src/auth.ts
+#     M  src/index.ts
+#     M  package.json
+#
+#   Stashes (2):
+#     stash@{0}: WIP on feature/add-auth: a1b2c3d Add login endpoint
+#     stash@{1}: On main: experimental changes
+#
+#   Ctrl+C to stop | Refresh: 1s
+#
 
 REPO_DIR="${1:-.}"
 INTERVAL="${2:-1}"
