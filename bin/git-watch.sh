@@ -72,7 +72,15 @@ while true; do
         while IFS= read -r line; do
             echo "  $line"
         done <<< "$stash_list"
+        echo ""
     fi
+
+    echo -e "\033[1mRecent commits:\033[0m"
+    git log --oneline -5 2>/dev/null | while IFS= read -r line; do
+        hash="${line%% *}"
+        msg="${line#* }"
+        echo -e "  \033[33m$hash\033[0m $msg"
+    done
 
     echo ""
     echo -e "\033[2mCtrl+C to stop | Refresh: ${INTERVAL}s\033[0m"
