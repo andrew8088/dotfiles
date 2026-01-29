@@ -82,6 +82,36 @@ while true; do
         echo -e "  \033[33m$hash\033[0m $msg"
     done
 
+    if [[ "$branch" != "main" && "$branch" != "master" && "$branch" != "detached" ]]; then
+        base=""
+        if git rev-parse --verify main >/dev/null 2>&1; then
+            base="main"
+        elif git rev-parse --verify master >/dev/null 2>&1; then
+            base="master"
+        fi
+
+        if [[ -n "$base" ]]; then
+            merge_base=$(git merge-base "$base" HEAD 2>/dev/null)
+            if [[ -n "$merge_base" ]]; then
+                changed_files=$(git diff --name-status "$merge_base" HEAD 2>/dev/null)
+                if [[ -n "$changed_files" ]]; then
+                    file_count=$(echo "$changed_files" | wc -l | tr -d ' ')
+                    echo ""
+                    echo -e "\033[1mBranch changes vs $base ($file_count files):\033[0m"
+                    echo "$changed_files" | while IFS=$'\t' read -r status file; do
+                        case "$status" in
+                            A) echo -e "  \033[32mA\033[0m  $file" ;;
+                            M) echo -e "  \033[34mM\033[0m  $file" ;;
+                            D) echo -e "  \033[31mD\033[0m  $file" ;;
+                            R*) echo -e "  \033[35mR\033[0m  $file" ;;
+                            *) echo -e "  \033[33m$status\033[0m  $file" ;;
+                        esac
+                    done
+                fi
+            fi
+        fi
+    fi
+
     echo ""
     echo -e "\033[2mCtrl+C to stop | Refresh: ${INTERVAL}s\033[0m"
 
