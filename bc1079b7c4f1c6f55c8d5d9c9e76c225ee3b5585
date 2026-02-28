@@ -1,0 +1,55 @@
+zsh/rc.zsh
+  1f35b9f58400be3e 33
+bin/claude-costs.py
+  cd9c80296b01cfdd 1-84
+zsh/git.zsh
+  f7d38256371a538a 78
+zsh/prompt.zsh
+  1f35b9f58400be3e 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.7",
+  "base_commit_sha": "bc1079b7c4f1c6f55c8d5d9c9e76c225ee3b5585",
+  "prompts": {
+    "1f35b9f58400be3e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ca5a395a-f5d6-4258-b5ee-d4c4c3cc257d",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Andrew Burgess <andrew@burgess.io>",
+      "messages": [],
+      "total_additions": 73,
+      "total_deletions": 12,
+      "accepted_lines": 62,
+      "overriden_lines": 0
+    },
+    "cd9c80296b01cfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "836a3c07-b059-4558-862e-1bf1be06e2bb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Andrew Burgess <andrew@burgess.io>",
+      "messages": [],
+      "total_additions": 238,
+      "total_deletions": 154,
+      "accepted_lines": 84,
+      "overriden_lines": 0
+    },
+    "f7d38256371a538a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9234fc07-72b8-4fad-95ca-d54238da5e7c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Andrew Burgess <andrew@burgess.io>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
