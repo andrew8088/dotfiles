@@ -1,0 +1,23 @@
+zsh/prompt.zsh
+  a87c72d925b45340 31,34,36-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "d702b0dd787c5c67bfb30e0c9c5c7397de7badd4",
+  "prompts": {
+    "a87c72d925b45340": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b970bdca-40dd-4e56-96ac-c904d5c32cba",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Andrew Burgess <andrew@burgess.io>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 2,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
